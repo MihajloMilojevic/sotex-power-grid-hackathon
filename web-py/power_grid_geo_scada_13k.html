@@ -1,0 +1,252 @@
+
+<h2 class="sr-only">Power Grid Digital Twin — Geographic SCADA map fetching live data from FastAPI backend. Shows TS, SS, DT nodes with F33 and F11 feeder connections as colored polylines across Nigeria.</h2>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<style>
+#map{height:420px;border-radius:var(--border-radius-md);border:.5px solid var(--color-border-tertiary)}
+.leaflet-container{background:var(--color-background-secondary)!important;font-family:var(--font-sans)!important}
+.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:var(--color-background-primary)!important;box-shadow:none!important}
+.leaflet-popup-content-wrapper{color:var(--color-text-primary);border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md)!important;font-size:12px;line-height:1.7}
+.leaflet-control-zoom a{background:var(--color-background-primary)!important;color:var(--color-text-primary)!important;border-color:var(--color-border-secondary)!important}
+@keyframes pl{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.lv{display:flex;align-items:center;gap:5px;background:var(--color-background-success);color:var(--color-text-success);padding:2px 9px;border-radius:var(--border-radius-md);font-size:11px;font-weight:500}
+.ld{width:6px;height:6px;border-radius:50%;background:currentColor;animation:pl 1.6s infinite}
+.fbt{padding:3px 10px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:transparent;font-size:11px;cursor:pointer;font-family:var(--font-sans);color:var(--color-text-secondary);display:inline-flex;align-items:center;gap:4px}
+.fbt.on{background:var(--color-background-secondary);color:var(--color-text-primary);font-weight:500;border-color:var(--color-border-primary)}
+.mc{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:8px 10px;margin-bottom:6px}
+.mv{font-size:17px;font-weight:500;color:var(--color-text-primary);margin:2px 0 0}
+.ml{font-size:10px;color:var(--color-text-secondary)}
+.cb{padding:4px 10px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:transparent;font-size:11px;color:var(--color-text-secondary);cursor:not-allowed;opacity:.4;font-family:var(--font-sans)}
+.sw{display:inline-block;border-radius:50%;vertical-align:middle;flex-shrink:0}
+.spinner{width:14px;height:14px;border:2px solid var(--color-border-secondary);border-top-color:var(--color-text-secondary);border-radius:50%;animation:spin .7s linear infinite;display:inline-block}
+#load-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);z-index:1000;font-size:12px;color:var(--color-text-secondary)}
+#map-wrap{position:relative}
+.err{background:var(--color-background-danger);color:var(--color-text-danger);padding:8px 12px;border-radius:var(--border-radius-md);font-size:12px;margin-bottom:10px;display:none}
+</style>
+
+<div style="display:flex;align-items:center;gap:10px;padding-bottom:10px;border-bottom:.5px solid var(--color-border-tertiary);margin-bottom:12px">
+  <div>
+    <div style="font-size:15px;font-weight:500;color:var(--color-text-primary)">Grid Digital Twin</div>
+    <div style="font-size:11px;color:var(--color-text-secondary)">Nigeria · geographic SCADA · <span id="api-url-label" style="font-family:var(--font-mono)">localhost:8000</span></div>
+  </div>
+  <div style="flex:1"></div>
+  <div class="lv" id="live-badge"><span class="ld"></span>LIVE</div>
+</div>
+
+<div id="err-banner" class="err"></div>
+
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap">
+  <span style="font-size:11px;color:var(--color-text-secondary)">Nodes:</span>
+  <button class="fbt on" id="btn-ts" onclick="toggle('ts',this)">
+    <span class="sw" style="background:#7F77DD;width:9px;height:9px"></span>TS
+  </button>
+  <button class="fbt on" id="btn-ss" onclick="toggle('ss',this)">
+    <span class="sw" style="background:#378ADD;width:7px;height:7px"></span>SS
+  </button>
+  <button class="fbt on" id="btn-dt" onclick="toggle('dt',this)">
+    <span class="sw" style="background:#639922;width:5px;height:5px"></span>DT
+  </button>
+  <span style="font-size:11px;color:var(--color-text-secondary);margin-left:6px">Feeders:</span>
+  <button class="fbt on" id="btn-f33" onclick="toggle('f33',this)">
+    <span style="display:inline-block;width:18px;height:2px;background:#1D9E75;border-radius:1px"></span>F33
+  </button>
+  <button class="fbt on" id="btn-f11" onclick="toggle('f11',this)">
+    <span style="display:inline-block;width:18px;height:2px;background:#639922;border-radius:1px"></span>F11
+  </button>
+  <button class="fbt on" id="btn-trd" onclick="toggle('trd',this)">
+    <span style="display:inline-block;width:18px;height:0;border-top:2px dashed #639922"></span>Trade
+  </button>
+  <div style="flex:1"></div>
+  <span style="font-size:11px;color:var(--color-text-tertiary)" id="map-hint">Click a node for details</span>
+</div>
+
+<div style="display:flex;gap:10px">
+  <div id="map-wrap" style="flex:1;min-width:0">
+    <div id="map"></div>
+    <div id="load-overlay"><div class="spinner"></div><span>Connecting to API…</span></div>
+  </div>
+
+  <div style="width:128px;flex-shrink:0">
+    <div style="font-size:10px;font-weight:500;color:var(--color-text-secondary);letter-spacing:.07em;margin-bottom:9px">GRID STATUS</div>
+    <div class="mc"><div class="ml">Transmission</div><div class="mv" id="s-ts">—</div></div>
+    <div class="mc"><div class="ml">Substations</div><div class="mv" id="s-ss">—</div></div>
+    <div class="mc"><div class="ml">Transformers</div><div class="mv" id="s-dt">—</div></div>
+    <div class="mc"><div class="ml">Feeder connections</div><div class="mv" id="s-edges">—</div></div>
+    <div class="mc"><div class="ml">Critical &gt;90%</div><div class="mv" style="color:var(--color-text-danger)" id="s-crit">—</div></div>
+    <div class="mc"><div class="ml">Avg load</div><div class="mv" id="s-avg">—</div></div>
+    <div style="margin-top:12px;padding-top:10px;border-top:.5px solid var(--color-border-tertiary)">
+      <div style="font-size:10px;font-weight:500;color:var(--color-text-secondary);margin-bottom:7px">LEGEND</div>
+      <div style="font-size:10px;color:var(--color-text-secondary);line-height:2.3">
+        <span class="sw" style="background:#7F77DD;width:10px;height:10px;margin-right:5px"></span>TS<br>
+        <span class="sw" style="background:#378ADD;width:7px;height:7px;margin-right:5px"></span>SS<br>
+        <span class="sw" style="background:#639922;width:5px;height:5px;margin-right:5px"></span>DT &lt;70%<br>
+        <span class="sw" style="background:#BA7517;width:5px;height:5px;margin-right:5px"></span>DT 70–90%<br>
+        <span class="sw" style="background:#A32D2D;width:5px;height:5px;margin-right:5px"></span>DT &gt;90%<br>
+        <span style="display:inline-block;width:18px;height:2px;background:#1D9E75;margin-right:5px;vertical-align:middle"></span>F33<br>
+        <span style="display:inline-block;width:18px;height:2px;background:#639922;margin-right:5px;vertical-align:middle"></span>F11<br>
+        <span style="display:inline-block;width:18px;height:0;border-top:2px dashed #639922;margin-right:5px;vertical-align:middle"></span>Trade F11
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:12px;padding-top:10px;border-top:.5px solid var(--color-border-tertiary);display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+  <div>
+    <div style="font-size:12px;font-weight:500;color:var(--color-text-primary)">Chaos Monkey</div>
+    <div style="font-size:11px;color:var(--color-text-secondary)">Select a node on the map to activate simulation</div>
+  </div>
+  <div style="flex:1;min-width:16px"></div>
+  <button class="cb" disabled>Kill selected node</button>
+  <button class="cb" disabled>Random failure</button>
+  <button class="cb" disabled>Run scenario ▾</button>
+  <div style="font-size:11px;color:var(--color-text-tertiary);border-left:.5px solid var(--color-border-tertiary);padding-left:10px;line-height:1.6">Cascade impact<br>shown here</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+// ── Config ────────────────────────────────────────────────────────────────────
+const API_BASE = 'http://localhost:8000/api/v1';
+
+// ── Colour helpers ────────────────────────────────────────────────────────────
+const lc = l => l > 90 ? '#A32D2D' : l > 70 ? '#BA7517' : '#639922';
+
+// ── Leaflet setup ─────────────────────────────────────────────────────────────
+const map = L.map('map', { preferCanvas: true, attributionControl: false, zoomControl: true });
+map.fitBounds([[4.2, 2.5], [14.0, 14.8]], { padding: [12, 12] });
+
+// Nigeria outline
+const NG = [[13.9,14.6],[12.4,14.6],[11.0,14.2],[9.0,13.5],[7.0,13.8],[5.5,12.8],[4.5,8.7],[4.3,7.5],[4.3,6.0],[5.0,5.0],[6.4,3.4],[6.4,2.7],[7.5,2.7],[9.0,2.9],[11.0,3.4],[12.5,3.6],[13.0,4.2],[13.9,4.2],[13.9,7.0],[13.5,9.5],[13.0,11.0],[13.1,13.0],[13.9,14.6]];
+L.polygon(NG, { color: '#888780', weight: .8, fillColor: '#888780', fillOpacity: .07, dashArray: '4,4' }).addTo(map);
+
+// Layer groups
+const layers = {
+  f33: L.layerGroup(),
+  f11: L.layerGroup(),
+  trd: L.layerGroup(),
+  dt:  L.layerGroup(),
+  ss:  L.layerGroup(),
+  ts:  L.layerGroup(),
+};
+// Render order: edges first, then nodes (TS on top)
+['f33','f11','trd','dt','ss','ts'].forEach(k => layers[k].addTo(map));
+
+// ── Popup builder ─────────────────────────────────────────────────────────────
+function nodePopup(n) {
+  const kva = n.kva ? (n.kva >= 1000 ? (n.kva/1000).toFixed(0)+' MVA' : n.kva+' kVA') : '—';
+  const badge = n.load > 90 ? '#A32D2D' : n.load > 70 ? '#BA7517' : '#639922';
+  return `<div style="font-weight:500;font-size:13px;margin-bottom:3px">${n.id}</div>`
+    + `<div style="color:var(--color-text-secondary);font-size:11px;margin-bottom:4px">${n.name}</div>`
+    + `<div>Load: <b style="color:${badge}">${n.load}%</b>`
+    + (n.kva ? ` · ${kva}` : '') + `</div>`
+    + `<div style="font-size:10px;color:var(--color-text-tertiary);margin-top:3px">`
+    + `${n.lat.toFixed(5)}°N &nbsp;${n.lon.toFixed(5)}°E</div>`;
+}
+
+function edgePopup(e) {
+  return `<div style="font-weight:500;font-size:13px;margin-bottom:3px">${e.feeder_name}</div>`
+    + `<div style="color:var(--color-text-secondary);font-size:11px">${e.feeder_type.replace('_',' ')} feeder</div>`
+    + `<div>Load: <b>${e.load}%</b></div>`;
+}
+
+// ── Render data ───────────────────────────────────────────────────────────────
+function renderTopology(data) {
+  // Build node lat/lon index for edge drawing
+  const nodePos = {};
+  data.nodes.forEach(n => { nodePos[n.id] = [n.lat, n.lon]; });
+
+  // Edges — draw first so nodes sit on top
+  data.edges.forEach(e => {
+    const src = nodePos[e.source], tgt = nodePos[e.target];
+    if (!src || !tgt) return;
+
+    let color, dash, weight;
+    if (e.feeder_type === 'F33')       { color = '#1D9E75'; weight = 1.5; dash = null; }
+    else if (e.feeder_type === 'F11')  { color = '#639922'; weight = 1;   dash = null; }
+    else                               { color = '#639922'; weight = 1;   dash = '5,4'; }
+
+    const opts = { color, weight, opacity: 0.65 };
+    if (dash) opts.dashArray = dash;
+
+    const lyr = e.feeder_type === 'F33' ? layers.f33
+              : e.feeder_type === 'F11' ? layers.f11
+              : layers.trd;
+
+    L.polyline([src, tgt], opts)
+      .bindPopup(edgePopup(e), { closeButton: false, maxWidth: 200 })
+      .addTo(lyr);
+  });
+
+  // Nodes
+  data.nodes.forEach(n => {
+    let marker;
+    if (n.type === 'TS') {
+      marker = L.circleMarker([n.lat, n.lon], {
+        radius: 10, fillColor: '#7F77DD', color: '#3C3489', weight: 1.5, fillOpacity: .93
+      });
+    } else if (n.type === 'SS') {
+      marker = L.circleMarker([n.lat, n.lon], {
+        radius: 6, fillColor: '#378ADD', color: '#0C447C', weight: .8, fillOpacity: .88
+      });
+    } else {
+      marker = L.circleMarker([n.lat, n.lon], {
+        radius: 3.5, fillColor: lc(n.load), color: 'transparent', weight: 0, fillOpacity: .82
+      });
+    }
+    marker.bindPopup(nodePopup(n), { closeButton: false, maxWidth: 220 });
+    marker.addTo(layers[n.type.toLowerCase()]);
+  });
+
+  // Stats
+  const s = data.stats;
+  document.getElementById('s-ts').textContent    = s.ts_count;
+  document.getElementById('s-ss').textContent    = s.ss_count;
+  document.getElementById('s-dt').textContent    = s.dt_count;
+  document.getElementById('s-edges').textContent = s.edge_count;
+  document.getElementById('s-crit').textContent  = s.critical_count;
+  document.getElementById('s-avg').textContent   = s.avg_load + '%';
+}
+
+// ── Layer toggles ─────────────────────────────────────────────────────────────
+window.toggle = (key, btn) => {
+  btn.classList.toggle('on');
+  map.hasLayer(layers[key]) ? map.removeLayer(layers[key]) : map.addLayer(layers[key]);
+};
+
+// ── Fetch from API ────────────────────────────────────────────────────────────
+async function loadData() {
+  const overlay = document.getElementById('load-overlay');
+  const errBanner = document.getElementById('err-banner');
+  try {
+    const res = await fetch(`${API_BASE}/topology/geo`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    overlay.style.display = 'none';
+    console.log("RUNNING TOPOLOGY DATA:", data);
+    renderTopology(data);
+  } catch (err) {
+    overlay.style.display = 'none';
+    errBanner.style.display = 'block';
+    errBanner.textContent =
+      `Could not reach API at ${API_BASE} — ${err.message}. `
+      + 'Start the backend with: uvicorn main:app --reload';
+    // Show mock data so the map is not empty
+    loadMockData();
+  }
+}
+
+// ── Fallback mock data (mirrors previous widget) ──────────────────────────────
+function loadMockData() {
+  function mkRng(seed){let s=seed>>>0;return()=>{s^=s<<13;s^=s>>>17;s^=s<<5;return(s>>>0)/4294967296}}
+  const r=mkRng(2024);
+  const jit=(la,lo,sp)=>[Math.max(4.4,Math.min(13.8,la+(r()-.5)*sp)),Math.max(2.8,Math.min(14.4,lo+(r()-.5)*sp))];
+  const SEEDS=[[6.5,3.4],[6.8,3.7],[7.3,4.0],[6.6,3.1],[7.0,3.6],[4.8,7.0],[6.3,7.5],[5.5,7.3],[5.0,8.0],[7.0,7.8],[9.1,7.4],[9.5,8.0],[8.5,7.0],[10.0,8.5],[9.8,7.0],[12.0,8.5],[10.5,7.4],[13.0,5.2],[11.5,6.5],[11.8,13.2],[10.5,11.5],[9.5,12.5],[12.5,13.9],[8.0,5.5],[7.5,6.5],[11.0,9.5],[10.0,4.5]];
+  const ts=[],ss=[],dt=[],edges=[];
+  SEEDS.forEach((s,i)=>{const[la,lo]=jit(s[0],s[1],.2);ts.push({id:'TS-'+String(i+1).padStart(2,'0'),type:'TS',name:'TS-'+String(i+1).padStart(2,'0'),lat:la,lon:lo,load:Math.floor(r()*55)+30})});
+  ts.forEach((t,ti)=>{const n=ti<6?4:3;for(let i=0;i<n;i++){const[la,lo]=jit(t.lat,t.lon,1.1);const sid=ss.length+1;ss.push({id:'SS-'+String(sid).padStart(2,'0'),type:'SS',name:'SS-'+String(sid).padStart(2,'0'),lat:la,lon:lo,load:Math.floor(r()*55)+30});edges.push({source:t.id,target:'SS-'+String(sid).padStart(2,'0'),feeder_type:'F33',feeder_id:sid,feeder_name:'F33-'+sid,load:Math.floor(r()*55)+30})}});
+  ss.forEach((s,si)=>{const n=si<65?6:5;for(let i=0;i<n;i++){const[la,lo]=jit(s.lat,s.lon,.45);const did=dt.length+1;dt.push({id:'DT-'+String(did).padStart(3,'0'),type:'DT',name:'DT-'+String(did).padStart(3,'0'),lat:la,lon:lo,load:Math.floor(r()*68)+28,kva:Math.floor(r()*800+200)});edges.push({source:s.id,target:'DT-'+String(did).padStart(3,'0'),feeder_type:'F11',feeder_id:did,feeder_name:'F11-'+did,load:Math.floor(r()*55)+30})}});
+  const all=[...ts,...ss,...dt];
+  renderTopology({nodes:all,edges,stats:{ts_count:ts.length,ss_count:ss.length,dt_count:dt.length,edge_count:edges.length,critical_count:all.filter(n=>n.load>90).length,avg_load:Math.round(all.reduce((a,n)=>a+n.load,0)/all.length)}});
+}
+
+loadData();
+</script>

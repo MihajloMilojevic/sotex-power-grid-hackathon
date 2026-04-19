@@ -1,0 +1,157 @@
+
+<h2 class="sr-only">Power Grid Digital Twin — Geographic SCADA map of Nigeria showing 614 nodes: 27 transmission stations (purple), 87 injection substations (blue), and 500 distribution transformers colored by load. Layer toggles and Chaos Monkey simulation panel included.</h2>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<style>
+#map{height:430px;border-radius:var(--border-radius-md);border:.5px solid var(--color-border-tertiary)}
+.leaflet-container{background:var(--color-background-secondary)!important;font-family:var(--font-sans)!important}
+.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:var(--color-background-primary)!important;box-shadow:none!important}
+.leaflet-popup-content-wrapper{color:var(--color-text-primary);border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md)!important;font-size:12px;line-height:1.7}
+.leaflet-control-zoom a{background:var(--color-background-primary)!important;color:var(--color-text-primary)!important;border-color:var(--color-border-secondary)!important}
+@keyframes pl{0%,100%{opacity:1}50%{opacity:.3}}
+.lv{display:flex;align-items:center;gap:5px;background:var(--color-background-success);color:var(--color-text-success);padding:2px 9px;border-radius:var(--border-radius-md);font-size:11px;font-weight:500}
+.ld{width:6px;height:6px;border-radius:50%;background:currentColor;animation:pl 1.6s infinite}
+.fbt{padding:3px 10px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:transparent;font-size:11px;cursor:pointer;font-family:var(--font-sans);color:var(--color-text-secondary);display:inline-flex;align-items:center;gap:4px}
+.fbt.on{background:var(--color-background-secondary);color:var(--color-text-primary);font-weight:500;border-color:var(--color-border-primary)}
+.mc{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:8px 10px;margin-bottom:6px}
+.mv{font-size:17px;font-weight:500;color:var(--color-text-primary);margin:2px 0 0}
+.ml{font-size:10px;color:var(--color-text-secondary)}
+.cb{padding:4px 10px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:transparent;font-size:11px;color:var(--color-text-secondary);cursor:not-allowed;opacity:.4;font-family:var(--font-sans)}
+.sw{display:inline-block;border-radius:50%;vertical-align:middle;flex-shrink:0}
+</style>
+
+<div style="display:flex;align-items:center;gap:10px;padding-bottom:10px;border-bottom:.5px solid var(--color-border-tertiary);margin-bottom:12px">
+  <div>
+    <div style="font-size:15px;font-weight:500;color:var(--color-text-primary)">Grid Digital Twin</div>
+    <div style="font-size:11px;color:var(--color-text-secondary)">Nigeria · 614 nodes · geographic SCADA view</div>
+  </div>
+  <div style="flex:1"></div>
+  <div class="lv"><span class="ld"></span>LIVE</div>
+</div>
+
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+  <span style="font-size:11px;color:var(--color-text-secondary)">Layers:</span>
+  <button class="fbt on" id="btn-ts" onclick="toggleLyr('ts',this)">
+    <span class="sw" style="background:#7F77DD;width:9px;height:9px"></span>TS 27
+  </button>
+  <button class="fbt on" id="btn-ss" onclick="toggleLyr('ss',this)">
+    <span class="sw" style="background:#378ADD;width:7px;height:7px"></span>SS 87
+  </button>
+  <button class="fbt on" id="btn-dt" onclick="toggleLyr('dt',this)">
+    <span class="sw" style="background:#639922;width:5px;height:5px"></span>DT 500
+  </button>
+  <div style="flex:1"></div>
+  <span style="font-size:11px;color:var(--color-text-tertiary)">Click a node for details</span>
+</div>
+
+<div style="display:flex;gap:10px">
+  <div id="map" style="flex:1;min-width:0"></div>
+
+  <div style="width:128px;flex-shrink:0">
+    <div style="font-size:10px;font-weight:500;color:var(--color-text-secondary);letter-spacing:.07em;margin-bottom:9px">GRID STATUS</div>
+    <div class="mc"><div class="ml">Transmission stations</div><div class="mv">27</div></div>
+    <div class="mc"><div class="ml">Injection substations</div><div class="mv">87</div></div>
+    <div class="mc"><div class="ml">Distribution xformers</div><div class="mv">500</div></div>
+    <div class="mc"><div class="ml">Critical &gt;90%</div><div class="mv" style="color:var(--color-text-danger)" id="sc">—</div></div>
+    <div class="mc"><div class="ml">Avg load</div><div class="mv" id="sa">—</div></div>
+    <div style="margin-top:12px;padding-top:10px;border-top:.5px solid var(--color-border-tertiary)">
+      <div style="font-size:10px;font-weight:500;color:var(--color-text-secondary);margin-bottom:7px">LEGEND</div>
+      <div style="font-size:10px;color:var(--color-text-secondary);line-height:2.3">
+        <span class="sw" style="background:#7F77DD;width:10px;height:10px;margin-right:5px"></span>TS · transmission<br>
+        <span class="sw" style="background:#378ADD;width:7px;height:7px;margin-right:5px"></span>SS · substation<br>
+        <span class="sw" style="background:#639922;width:5px;height:5px;margin-right:5px"></span>DT &lt;70% normal<br>
+        <span class="sw" style="background:#BA7517;width:5px;height:5px;margin-right:5px"></span>DT 70–90% warn<br>
+        <span class="sw" style="background:#A32D2D;width:5px;height:5px;margin-right:5px"></span>DT &gt;90% critical
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:12px;padding-top:10px;border-top:.5px solid var(--color-border-tertiary);display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+  <div>
+    <div style="font-size:12px;font-weight:500;color:var(--color-text-primary)">Chaos Monkey</div>
+    <div style="font-size:11px;color:var(--color-text-secondary)">Select a node on the map to activate simulation</div>
+  </div>
+  <div style="flex:1;min-width:16px"></div>
+  <button class="cb" disabled>Kill selected node</button>
+  <button class="cb" disabled>Random failure</button>
+  <button class="cb" disabled>Run scenario ▾</button>
+  <div style="font-size:11px;color:var(--color-text-tertiary);border-left:.5px solid var(--color-border-tertiary);padding-left:10px;line-height:1.6">Cascade impact<br>shown here</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+function mkRng(seed){let s=seed>>>0;return()=>{s^=s<<13;s^=s>>>17;s^=s<<5;return(s>>>0)/4294967296}}
+const r=mkRng(2024);
+const lc=l=>l>90?'#A32D2D':l>70?'#BA7517':'#639922';
+const jit=(la,lo,sp)=>[Math.max(4.4,Math.min(13.8,la+(r()-.5)*sp)),Math.max(2.8,Math.min(14.4,lo+(r()-.5)*sp))];
+
+// Simplified Nigeria border [lat, lon]
+const NG=[[13.9,14.6],[12.4,14.6],[11.0,14.2],[9.0,13.5],[7.0,13.8],[5.5,12.8],[4.5,8.7],[4.3,7.5],[4.3,6.0],[5.0,5.0],[6.4,3.4],[6.4,2.7],[7.5,2.7],[9.0,2.9],[11.0,3.4],[12.5,3.6],[13.0,4.2],[13.9,4.2],[13.9,7.0],[13.5,9.5],[13.0,11.0],[13.1,13.0],[13.9,14.6]];
+
+// 27 TS seed positions across Nigeria's 6 geopolitical zones
+const SEEDS=[[6.5,3.4],[6.8,3.7],[7.3,4.0],[6.6,3.1],[7.0,3.6],[4.8,7.0],[6.3,7.5],[5.5,7.3],[5.0,8.0],[7.0,7.8],[9.1,7.4],[9.5,8.0],[8.5,7.0],[10.0,8.5],[9.8,7.0],[12.0,8.5],[10.5,7.4],[13.0,5.2],[11.5,6.5],[11.8,13.2],[10.5,11.5],[9.5,12.5],[12.5,13.9],[8.0,5.5],[7.5,6.5],[11.0,9.5],[10.0,4.5]];
+
+const ts=[],ss=[],dt=[];
+
+// 27 TS
+SEEDS.forEach((s,i)=>{
+  const[la,lo]=jit(s[0],s[1],.2);
+  ts.push({id:'TS-'+String(i+1).padStart(2,'0'),lat:la,lon:lo,load:Math.floor(r()*65)+30,kva:Math.floor(r()*150+100)*1000});
+});
+
+// 87 SS: first 6 TS → 4 SS, rest → 3 SS (6×4 + 21×3 = 87)
+ts.forEach((t,ti)=>{
+  const n=ti<6?4:3;
+  for(let i=0;i<n;i++){
+    const[la,lo]=jit(t.lat,t.lon,1.1);
+    ss.push({id:'SS-'+String(ss.length+1).padStart(2,'0'),lat:la,lon:lo,load:Math.floor(r()*65)+30,kva:Math.floor(r()*60+20)*1000,tsId:ti});
+  }
+});
+
+// 500 DT: first 65 SS → 6 DT, rest → 5 DT (65×6 + 22×5 = 500)
+ss.forEach((s,si)=>{
+  const n=si<65?6:5;
+  for(let i=0;i<n;i++){
+    const[la,lo]=jit(s.lat,s.lon,.45);
+    dt.push({id:'DT-'+String(dt.length+1).padStart(3,'0'),lat:la,lon:lo,load:Math.floor(r()*68)+28,kva:Math.floor(r()*800+200),ssId:si});
+  }
+});
+
+// Compute stats
+const all=[...ts,...ss,...dt];
+document.getElementById('sc').textContent=all.filter(n=>n.load>90).length;
+document.getElementById('sa').textContent=Math.round(all.reduce((a,n)=>a+n.load,0)/all.length)+'%';
+
+// Init map
+const map=L.map('map',{preferCanvas:true,attributionControl:false,zoomControl:true});
+map.fitBounds([[4.2,2.5],[14.0,14.8]],{padding:[12,12]});
+
+// Nigeria outline
+L.polygon(NG,{color:'#888780',weight:.9,fillColor:'#888780',fillOpacity:.07,dashArray:'4,4'}).addTo(map);
+
+const dtL=L.layerGroup(),ssL=L.layerGroup(),tsL=L.layerGroup();
+
+function popup(n,type){
+  return`<div style="font-weight:500;font-size:13px;margin-bottom:2px">${n.id}</div>`+
+    `<div style="color:var(--color-text-secondary)">${type}</div>`+
+    `<div>Load: <b>${n.load}%</b> · ${n.kva>=1000?(n.kva/1000).toFixed(0)+' MVA':n.kva+' kVA'}</div>`+
+    `<div style="font-size:10px;color:var(--color-text-tertiary);margin-top:2px">${n.lat.toFixed(4)}°N ${n.lon.toFixed(4)}°E</div>`;
+}
+
+dt.forEach(n=>L.circleMarker([n.lat,n.lon],{radius:3.5,fillColor:lc(n.load),color:'transparent',weight:0,fillOpacity:.8})
+  .bindPopup(popup(n,'Distribution Transformer'),{closeButton:false,maxWidth:200}).addTo(dtL));
+
+ss.forEach(n=>L.circleMarker([n.lat,n.lon],{radius:6,fillColor:'#378ADD',color:'#0C447C',weight:.8,fillOpacity:.88})
+  .bindPopup(popup(n,'Injection Substation'),{closeButton:false,maxWidth:200}).addTo(ssL));
+
+ts.forEach(n=>L.circleMarker([n.lat,n.lon],{radius:10,fillColor:'#7F77DD',color:'#3C3489',weight:1.5,fillOpacity:.93})
+  .bindPopup(popup(n,'Transmission Station'),{closeButton:false,maxWidth:200}).addTo(tsL));
+
+[dtL,ssL,tsL].forEach(l=>l.addTo(map));
+
+window.toggleLyr=(t,b)=>{
+  b.classList.toggle('on');
+  const l=t==='ts'?tsL:t==='ss'?ssL:dtL;
+  map.hasLayer(l)?map.removeLayer(l):map.addLayer(l);
+};
+</script>

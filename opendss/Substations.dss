@@ -1,0 +1,172 @@
+New Transformer.TransMV_B5 Phases=3 Windings=2
+~ Buses=[Bus_132KV KATAMPE 1 TS_33KV WUSE II FDR_PL_PL_End, Bus_B5_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_B52 Phases=3 Windings=2
+~ Buses=[Bus_132KV KATAMPE 1 TS_33KV WUSE II FDR_PL_PL_End, Bus_B52_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_C4 Phases=3 Windings=2
+~ Buses=[Bus_132KV KATAMPE 1 TS_33KV WUSE II FDR_PL_PL_End, Bus_C4_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_G2 Phases=3 Windings=2
+~ Buses=[Bus_132KV CENTRAL AREA TS_33KV FDR 5_PL_PL_End, Bus_G2_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_ICC(G23) Phases=3 Windings=2
+~ Buses=[Bus_132KV CENTRAL AREA TS_33KV FDR 5_PL_PL_End, Bus_ICC(G23)_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_G22 Phases=3 Windings=2
+~ Buses=[Bus_132KV APO TS_33KV FDR H1_PL_PL_End, Bus_G22_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_G24 Phases=3 Windings=2
+~ Buses=[Bus_132KV APO TS_33KV FDR H1_PL_PL_End, Bus_G24_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_G25 Phases=3 Windings=2
+~ Buses=[Bus_132KV APO TS_33KV FDR H1_PL_PL_End, Bus_G25_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_L15 Phases=3 Windings=2
+~ Buses=[Bus_33OKV APIR-LAFIA LINE 1&2_132KV LAFIA TS_33KV FDR A2_PL_PL_End, Bus_L15_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_L14 Phases=3 Windings=2
+~ Buses=[Bus_33OKV APIR-LAFIA LINE 1&2_132KV LAFIA TS_33KV FDR A2_PL_PL_End, Bus_L14_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_L16 Phases=3 Windings=2
+~ Buses=[Bus_33OKV APIR-LAFIA LINE 1&2_132KV LAFIA TS_33KV FDR A2_PL_PL_End, Bus_L16_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_DOMA Phases=3 Windings=2
+~ Buses=[Bus_33OKV APIR-LAFIA LINE 1&2_132KV LAFIA TS_33KV FDR A2_PL_PL_End, Bus_DOMA_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_T1 Phases=3 Windings=2
+~ Buses=[Bus_132KV KATAMPE 1 TS_33KV GWARINPA FDR_PL_PL_End, Bus_T1_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_LIFE CAMP ESTATE Phases=3 Windings=2
+~ Buses=[Bus_132KV KATAMPE 1 TS_33KV LIFECAMP FDR_PL_PL_End, Bus_LIFE CAMP ESTATE_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_C3 Phases=3 Windings=2
+~ Buses=[Bus_132KV KATAMPE 2 TS_33KV MAITAMA FDR_PL_PL_End, Bus_C3_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_MPAPE_5MVA Phases=3 Windings=2
+~ Buses=[Bus_132KV KATAMPE 2 TS_33KV MPAPE FDR_PL_PL_End, Bus_MPAPE_5MVA_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_G32 Phases=3 Windings=2
+~ Buses=[Bus_132KV APO TS_33KV FDR H2_PL_PL_End, Bus_G32_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_E2 Phases=3 Windings=2
+~ Buses=[Bus_132KV APO TS_33KV FDR H21_PL_PL_End, Bus_E2_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_R4 Phases=3 Windings=2
+~ Buses=[Bus_132KV APO TS_33KV FDR H3_PL_PL_End, Bus_R4_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_R5 Phases=3 Windings=2
+~ Buses=[Bus_132KV APO TS_33KV FDR H3_PL_PL_End, Bus_R5_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_R3 Phases=3 Windings=2
+~ Buses=[Bus_132KV APO TS_33KV FDR H3_PL_PL_End, Bus_R3_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_NAF VALLEY Phases=3 Windings=2
+~ Buses=[Bus_132KV APO TS_33KV FDR H3_PL_PL_End, Bus_NAF VALLEY_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_BAT Phases=3 Windings=2
+~ Buses=[Bus_132KV APO TS_33KV FDR H3_PL_PL_End, Bus_BAT_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_S22 Phases=3 Windings=2
+~ Buses=[Bus_132KV APO TS_33KV FDR H31_PL_PL_End, Bus_S22_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_S23 Phases=3 Windings=2
+~ Buses=[Bus_132KV APO TS_33KV FDR H31_PL_PL_End, Bus_S23_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_S24 Phases=3 Windings=2
+~ Buses=[Bus_132KV APO TS_33KV FDR H31_PL_PL_End, Bus_S24_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_APO RESETTLEMENT Phases=3 Windings=2
+~ Buses=[Bus_132KV APO TS_33KV FDR H35_PL_PL_End, Bus_APO RESETTLEMENT_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_S26 Phases=3 Windings=2
+~ Buses=[Bus_132KV APO TS_33KV FDR H37_PL_PL_End, Bus_S26_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_R2 Phases=3 Windings=2
+~ Buses=[Bus_132KV APO TS_33KV FDR H5_PL_PL_End, Bus_R2_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_R6 Phases=3 Windings=2
+~ Buses=[Bus_132KV APO TS_33KV FDR H5_PL_PL_End, Bus_R6_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_R7 Phases=3 Windings=2
+~ Buses=[Bus_132KV APO TS_33KV FDR H5_PL_PL_End, Bus_R7_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_K3 Phases=3 Windings=2
+~ Buses=[Bus_132KV KUBWA TS_33KV BWARI FDR_PL_PL_End, Bus_K3_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_K33 Phases=3 Windings=2
+~ Buses=[Bus_132KV KUBWA TS_33KV BWARI FDR_PL_PL_End, Bus_K33_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_K32 Phases=3 Windings=2
+~ Buses=[Bus_132KV KUBWA TS_33KV DAM FDR_PL_PL_End, Bus_K32_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_T2 Phases=3 Windings=2
+~ Buses=[Bus_132KV KUBWA TS_33KV DAWAKI FDR_PL_PL_End, Bus_T2_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_MOPOL Phases=3 Windings=2
+~ Buses=[Bus_132KV KUBWA TS_33KV DEIDEI FDR_PL_PL_End, Bus_MOPOL_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_F2 Phases=3 Windings=2
+~ Buses=[Bus_132KV KUBWA TS_33KV DEIDEI FDR_PL_PL_End, Bus_F2_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_DEIDEI 2.5MVA MARKET Phases=3 Windings=2
+~ Buses=[Bus_132KV KUBWA TS_33KV DEIDEI FDR_PL_PL_End, Bus_DEIDEI 2.5MVA MARKET_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_K2 Phases=3 Windings=2
+~ Buses=[Bus_132KV KUBWA TS_33KV KUBWA FDR_PL_PL_End, Bus_K2_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_NIPP Phases=3 Windings=2
+~ Buses=[Bus_132KV KUBWA TS_33KV NIPP FDR_PL_PL_End, Bus_NIPP_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_B33(TR2) Phases=3 Windings=2
+~ Buses=[Bus_132KV CENTRAL AREA TS_33KV FDR 4_PL_PL_End, Bus_B33(TR2)_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_B33(TR1) Phases=3 Windings=2
+~ Buses=[Bus_132KV CENTRAL AREA TS_33KV FDR 2_PL_PL_End, Bus_B33(TR1)_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_B32 Phases=3 Windings=2
+~ Buses=[Bus_132KV CENTRAL AREA TS_33KV FDR 3_PL_PL_End, Bus_B32_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_C2 Phases=3 Windings=2
+~ Buses=[Bus_132KV CENTRAL AREA TS_33KV FDR 6_PL_PL_End, Bus_C2_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_M2 Phases=3 Windings=2
+~ Buses=[Bus_132KV CENTRAL AREA TS_33KV FDR 8_PL_PL_End, Bus_M2_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_FIELDBASE Phases=3 Windings=2
+~ Buses=[Bus_132KV SULEJA TS_33KV FIELDBASE FDR_PL_PL_End, Bus_FIELDBASE_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_SABON WUSE Phases=3 Windings=2
+~ Buses=[Bus_132KV SULEJA TS_33KV JERE FDR_PL_PL_End, Bus_SABON WUSE_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_FHA ZUBA Phases=3 Windings=2
+~ Buses=[Bus_132KV SULEJA TS_33KV JIWA FDR_PL_PL_End, Bus_FHA ZUBA_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_S8 MADALLA Phases=3 Windings=2
+~ Buses=[Bus_132KV SULEJA TS_33KV JIWA FDR_PL_PL_End, Bus_S8 MADALLA_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_S3/KANTOMA Phases=3 Windings=2
+~ Buses=[Bus_132KV SULEJA TS_33KV SULEJA FDR_PL_PL_End, Bus_S3/KANTOMA_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_A28 Phases=3 Windings=2
+~ Buses=[Bus_132KV AKWANGA TS_33KV FDR 2 (LAFIA)_PL_PL_End, Bus_A28_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_A22 Phases=3 Windings=2
+~ Buses=[Bus_132KV KARU TS_33KV FDR K1_PL_PL_End, Bus_A22_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_A23 Phases=3 Windings=2
+~ Buses=[Bus_132KV KARU TS_33KV FDR K4_PL_PL_End, Bus_A23_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_J22 Phases=3 Windings=2
+~ Buses=[Bus_132KV KARU TS_33KV FDR K4_PL_PL_End, Bus_J22_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_J32 Phases=3 Windings=2
+~ Buses=[Bus_132KV KARU TS_33KV FDR K5_PL_PL_End, Bus_J32_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_J33 Phases=3 Windings=2
+~ Buses=[Bus_132KV KARU TS_33KV FDR K5_PL_PL_End, Bus_J33_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_L5 Phases=3 Windings=2
+~ Buses=[Bus_132KV GWAGWALADA TS_33KV FDR L31_PL_PL_End, Bus_L5_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_UNI ABUJA Phases=3 Windings=2
+~ Buses=[Bus_132KV GWAGWALADA TS_33KV FDR L32_PL_PL_End, Bus_UNI ABUJA_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_L3 Phases=3 Windings=2
+~ Buses=[Bus_132KV GWAGWALADA TS_33KV FDR L35_PL_PL_End, Bus_L3_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_L4 Phases=3 Windings=2
+~ Buses=[Bus_132KV GWAGWALADA TS_33KV FDR L35_PL_PL_End, Bus_L4_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_L2 Phases=3 Windings=2
+~ Buses=[Bus_132KV GWAGWALADA TS_33KV FDR L36_PL_PL_End, Bus_L2_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_TRADEMORE(UNMANNED) Phases=3 Windings=2
+~ Buses=[Bus_132KV KUKWABA TS_33KV FDR L32_PL_PL_End, Bus_TRADEMORE(UNMANNED)_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_S25 Phases=3 Windings=2
+~ Buses=[Bus_132KV KUKWABA TS_33KV FDR L33_PL_PL_End, Bus_S25_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_B6 Phases=3 Windings=2
+~ Buses=[Bus_132KV KUKWABA TS_33KV FDR L34_PL_PL_End, Bus_B6_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_WUYE1 Phases=3 Windings=2
+~ Buses=[Bus_132KV KUKWABA TS_33KV FDR L34_PL_PL_End, Bus_WUYE1_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_WUYE2 Phases=3 Windings=2
+~ Buses=[Bus_132KV KUKWABA TS_33KV FDR L34_PL_PL_End, Bus_WUYE2_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_POWERHOUSE Phases=3 Windings=2
+~ Buses=[Bus_132KV MINNA TS_33KV POWER HOUSE FDR_PL_PL_End, Bus_POWERHOUSE_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_BANK FDR Phases=3 Windings=2
+~ Buses=[Bus_132KV MINNA TS_33KV POWER HOUSE FDR_PL_PL_End, Bus_BANK FDR_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_A20 Phases=3 Windings=2
+~ Buses=[Bus_132KV AKWANGA TS_33KV FDR 1 (AKWANGA FDR)_PL_PL_End, Bus_A20_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_K34 Phases=3 Windings=2
+~ Buses=[Bus_132KV KEFFI TS_33KV KEFFI FDR_PL_PL_End, Bus_K34_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_K35 Phases=3 Windings=2
+~ Buses=[Bus_132KV KEFFI TS_33KV NASARAWA FDR_PL_PL_End, Bus_K35_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_AP POLY Phases=3 Windings=2
+~ Buses=[Bus_132KV BIDA TS_33KV DOKO FDR_PL_PL_End, Bus_AP POLY_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_WUSHISHI Phases=3 Windings=2
+~ Buses=[Bus_132KV BIDA TS_33KV LEMU FDR_PL_PL_End, Bus_WUSHISHI_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_AGAIE Phases=3 Windings=2
+~ Buses=[Bus_132KV BIDA TS_33KV NEW AGAIE FDR_PL_PL_End, Bus_AGAIE_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_KONTAGORA Phases=3 Windings=2
+~ Buses=[Bus_132KV KONTAGORA TS_33KV TOWN FDR_PL_PL_End, Bus_KONTAGORA_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_LOKOGOMA Phases=3 Windings=2
+~ Buses=[Bus_132KV LOKOJA TS_33KV FDR 2_PL_PL_End, Bus_LOKOGOMA_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_LOKOJA MAIN Phases=3 Windings=2
+~ Buses=[Bus_132KV LOKOJA TS_33KV FDR 2_PL_PL_End, Bus_LOKOJA MAIN_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_PAIKO Phases=3 Windings=2
+~ Buses=[Bus_132KV MINNA TS_33KV LAPAI FDR_PL_PL_End, Bus_PAIKO_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_MAIKUNKELE Phases=3 Windings=2
+~ Buses=[Bus_132KV MINNA TS_33KV MAIKUNKELE FDR_PL_PL_End, Bus_MAIKUNKELE_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_ZARUMAI Phases=3 Windings=2
+~ Buses=[Bus_132KV MINNA TS_33KV ZARUMAI FDR_PL_PL_End, Bus_ZARUMAI_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_OSUWAYA Phases=3 Windings=2
+~ Buses=[Bus_132KV OKENE TS_33KV OKENE FDR_PL_PL_End, Bus_OSUWAYA_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_G42 Phases=3 Windings=2
+~ Buses=[Bus_132KV APO TS_33KV FDR H11_PL_PL_End, Bus_G42_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_G4 Phases=3 Windings=2
+~ Buses=[Bus_132KV APO TS_33KV FDR H11_PL_PL_End, Bus_G4_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_M44 Phases=3 Windings=2
+~ Buses=[Bus_132KV GIS DAWAKI TS_33KV FDR D1_PL_PL_End, Bus_M44_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_M42 Phases=3 Windings=2
+~ Buses=[Bus_132KV GIS DAWAKI TS_33KV FDR D2_PL_PL_End, Bus_M42_LV] kVA=1000 kV=[35, 10]
+New Transformer.TransMV_M43 Phases=3 Windings=2
+~ Buses=[Bus_132KV GIS DAWAKI TS_33KV FDR D2_PL_PL_End, Bus_M43_LV] kVA=1000 kV=[35, 10]

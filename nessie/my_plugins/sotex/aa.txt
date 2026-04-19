@@ -1,0 +1,82 @@
+
+        # ---- 3. Add Distribution Substations as nodes ----
+        cursor.execute("""
+            SELECT Id, Name, Latitude, Longitude, NameplateRating, MeterId
+            FROM dbo.DistributionSubstation
+        """)
+        for row in cursor.fetchall():
+            node = Node(
+                f"DT_{row.Id}",
+            )
+            graph.add_node(node)
+
+        
+
+        # b) TS -> DT edges (via DistributionSubstation.Feeder33Id)
+            cursor.execute("""
+                SELECT Id FROM dbo.DistributionSubstation WHERE Feeder33Id = ?
+            """, f33.Id)
+            dt_ids = [row.Id for row in cursor.fetchall()]
+
+            for dt_id in dt_ids:
+                dt_node_id = f"DT_{dt_id}"
+                dt_node = graph.get_node(dt_node_id)
+                if dt_node is None:
+                    continue
+                edge = Edge(
+                    edge_id=f"F33_{f33.Id}_to_DT_{dt_id}",
+                    source=ts_node,
+                    target=dt_node,
+                    attributes={
+                        "label": Attribute("label", f33.Name or f"Feeder33 {f33.Id}"),
+                        "meter_id": Attribute("meter_id", f33.MeterId or "None"),
+                        "nameplate_rating": Attribute("nameplate_rating", f33.NameplateRating or "None")
+                    }
+                )
+                graph.add_edge(edge)
+
+
+                # ---- 5. Add Feeders11 edges ----
+        cursor.execute("""
+            SELECT Id, Name, SsId, TsId, MeterId, NameplateRating
+            FROM dbo.Feeders11
+        """)
+        feeders11 = cursor.fetchall()
+
+        for f11 in feeders11:
+            # Find DistributionSubstation(s) that reference this Feeder11
+            cursor.execute("""
+                SELECT Id FROM dbo.DistributionSubstation WHERE Feeder11Id = ?
+            """, f11.Id)
+            dt_ids = [row.Id for row in cursor.fetchall()]
+            if not dt_ids:
+                continue
+
+            # Determine source node (SS or TS)
+            if f11.SsId is not None:
+                source_id = f"SS_{f11.SsId}"
+            elif f11.TsId is not None:
+                source_id = f"TS_{f11.TsId}"
+            else:
+                continue
+
+            source_node = graph.get_node(source_id)
+            if source_node is None:
+                continue
+
+            for dt_id in dt_ids:
+                dt_node_id = f"DT_{dt_id}"
+                dt_node = graph.get_node(dt_node_id)
+                if dt_node is None:
+                    continue
+                edge = Edge(
+                    edge_id=f"F11_{f11.Id}_to_DT_{dt_id}",
+                    source=source_node,
+                    target=dt_node,
+                    attributes={
+                        "label": Attribute("label", f11.Name or f"Feeder11 {f11.Id}"),
+                        "meter_id": Attribute("meter_id", f11.MeterId or "None"),
+                        "nameplate_rating": Attribute("nameplate_rating", f11.NameplateRating or "None")
+                    }
+                )
+                graph.add_edge(edge)

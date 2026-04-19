@@ -1,0 +1,28 @@
+clear
+New Vsource.Source_OKENE Bus1=Bus_OKENE BasekV=110 Units=kV
+New Vsource.Source_LOKOJA Bus1=Bus_LOKOJA BasekV=110 Units=kV
+New Vsource.Source_AJAOKUTA Bus1=Bus_AJAOKUTA BasekV=110 Units=kV
+New Vsource.Source_BIDA Bus1=Bus_BIDA BasekV=110 Units=kV
+New Vsource.Source_KONTAGORA Bus1=Bus_KONTAGORA BasekV=110 Units=kV
+New Vsource.Source_MINNA Bus1=Bus_MINNA BasekV=110 Units=kV
+New Vsource.Source_TEGINA Bus1=Bus_TEGINA BasekV=110 Units=kV
+New Vsource.Source_LAFIA Bus1=Bus_LAFIA BasekV=110 Units=kV
+New Vsource.Source_AT4 Bus1=Bus_AT4 BasekV=110 Units=kV
+New Vsource.Source_AT6 Bus1=Bus_AT6 BasekV=110 Units=kV
+New Vsource.Source_AT7 Bus1=Bus_AT7 BasekV=110 Units=kV
+New Vsource.Source_AT8 Bus1=Bus_AT8 BasekV=110 Units=kV
+New Vsource.Source_AT9 Bus1=Bus_AT9 BasekV=110 Units=kV
+New Vsource.Source_GW Bus1=Bus_GW BasekV=110 Units=kV
+New Vsource.Source_KUKWABA Bus1=Bus_KUKWABA BasekV=110 Units=kV
+New Vsource.Source_SHIRORO Bus1=Bus_SHIRORO BasekV=110 Units=kV
+New Vsource.Source_KATAMPE 2 Bus1=Bus_KATAMPE 2 BasekV=110 Units=kV
+New Vsource.Source_AT3 Bus1=Bus_AT3 BasekV=110 Units=kV
+New Vsource.Source_AT5 Bus1=Bus_AT5 BasekV=110 Units=kV
+New Vsource.Source_GIS DAWAKI Bus1=Bus_GIS DAWAKI BasekV=110 Units=kV
+New Vsource.Source_KATAMPE 1 Bus1=Bus_KATAMPE 1 BasekV=110 Units=kV
+Redirect Feeders33.dss
+Redirect Substations.dss
+Redirect Feeders11.dss
+Redirect LV_Transformers.dss
+Set VoltageBases=[110, 35, 10, 0.4]
+CalcVoltageBases

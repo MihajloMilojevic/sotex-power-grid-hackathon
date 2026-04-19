@@ -1,0 +1,38 @@
+clear
+
+New Vsource.Src_OKENE Bus1=Bus_TS_OKENE BasekV=110 pu=1.0 phases=3
+New Vsource.Src_LOKOJA Bus1=Bus_TS_LOKOJA BasekV=110 pu=1.0 phases=3
+New Vsource.Src_AJAOKUTA Bus1=Bus_TS_AJAOKUTA BasekV=110 pu=1.0 phases=3
+New Vsource.Src_BIDA Bus1=Bus_TS_BIDA BasekV=110 pu=1.0 phases=3
+New Vsource.Src_KONTAGORA Bus1=Bus_TS_KONTAGORA BasekV=110 pu=1.0 phases=3
+New Vsource.Src_MINNA Bus1=Bus_TS_MINNA BasekV=110 pu=1.0 phases=3
+New Vsource.Src_TEGINA Bus1=Bus_TS_TEGINA BasekV=110 pu=1.0 phases=3
+New Vsource.Src_LAFIA Bus1=Bus_TS_LAFIA BasekV=110 pu=1.0 phases=3
+New Vsource.Src_AT4 Bus1=Bus_TS_AT4 BasekV=110 pu=1.0 phases=3
+New Vsource.Src_AT6 Bus1=Bus_TS_AT6 BasekV=110 pu=1.0 phases=3
+New Vsource.Src_AT7 Bus1=Bus_TS_AT7 BasekV=110 pu=1.0 phases=3
+New Vsource.Src_AT8 Bus1=Bus_TS_AT8 BasekV=110 pu=1.0 phases=3
+New Vsource.Src_AT9 Bus1=Bus_TS_AT9 BasekV=110 pu=1.0 phases=3
+New Vsource.Src_GW Bus1=Bus_TS_GW BasekV=110 pu=1.0 phases=3
+New Vsource.Src_KUKWABA Bus1=Bus_TS_KUKWABA BasekV=110 pu=1.0 phases=3
+New Vsource.Src_SHIRORO Bus1=Bus_TS_SHIRORO BasekV=110 pu=1.0 phases=3
+New Vsource.Src_KATAMPE_2 Bus1=Bus_TS_KATAMPE_2 BasekV=110 pu=1.0 phases=3
+New Vsource.Src_AT3 Bus1=Bus_TS_AT3 BasekV=110 pu=1.0 phases=3
+New Vsource.Src_AT5 Bus1=Bus_TS_AT5 BasekV=110 pu=1.0 phases=3
+New Vsource.Src_GIS_DAWAKI Bus1=Bus_TS_GIS_DAWAKI BasekV=110 pu=1.0 phases=3
+New Vsource.Src_KATAMPE_1 Bus1=Bus_TS_KATAMPE_1 BasekV=110 pu=1.0 phases=3
+
+Redirect LineCodes.dss
+Redirect Feeders33.dss
+Redirect Substations.dss
+Redirect Feeders11.dss
+Redirect LV_Transformers.dss
+
+Set VoltageBases=[110, 33, 11, 0.4]
+CalcVoltageBases
+
+BusCoords BusCoords.dat
+
+Set MaxIter=100
+Set Tolerance=0.0001
+Solve

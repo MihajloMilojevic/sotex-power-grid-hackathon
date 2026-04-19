@@ -1,0 +1,175 @@
+! MV substations – 33/11 kV transformers
+New Transformer.TrMV_B5 Phases=3 Windings=2
+~ Buses=[Bus_SS_1_HV, Bus_SS_B5_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_B52 Phases=3 Windings=2
+~ Buses=[Bus_SS_2_HV, Bus_SS_B52_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_G2 Phases=3 Windings=2
+~ Buses=[Bus_SS_5_HV, Bus_SS_G2_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_G42 Phases=3 Windings=2
+~ Buses=[Bus_SS_6_HV, Bus_SS_G42_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_G22 Phases=3 Windings=2
+~ Buses=[Bus_SS_7_HV, Bus_SS_G22_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_G4 Phases=3 Windings=2
+~ Buses=[Bus_SS_8_HV, Bus_SS_G4_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_L15 Phases=3 Windings=2
+~ Buses=[Bus_SS_9_HV, Bus_SS_L15_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_M42 Phases=3 Windings=2
+~ Buses=[Bus_SS_10_HV, Bus_SS_M42_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_M43 Phases=3 Windings=2
+~ Buses=[Bus_SS_11_HV, Bus_SS_M43_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_T1 Phases=3 Windings=2
+~ Buses=[Bus_SS_12_HV, Bus_SS_T1_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_C3 Phases=3 Windings=2
+~ Buses=[Bus_SS_13_HV, Bus_SS_C3_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_G24 Phases=3 Windings=2
+~ Buses=[Bus_SS_14_HV, Bus_SS_G24_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_G32 Phases=3 Windings=2
+~ Buses=[Bus_SS_15_HV, Bus_SS_G32_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_E2 Phases=3 Windings=2
+~ Buses=[Bus_SS_16_HV, Bus_SS_E2_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_R4 Phases=3 Windings=2
+~ Buses=[Bus_SS_17_HV, Bus_SS_R4_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_R5 Phases=3 Windings=2
+~ Buses=[Bus_SS_18_HV, Bus_SS_R5_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_S22 Phases=3 Windings=2
+~ Buses=[Bus_SS_19_HV, Bus_SS_S22_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_S23 Phases=3 Windings=2
+~ Buses=[Bus_SS_20_HV, Bus_SS_S23_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_S24 Phases=3 Windings=2
+~ Buses=[Bus_SS_21_HV, Bus_SS_S24_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_S26 Phases=3 Windings=2
+~ Buses=[Bus_SS_22_HV, Bus_SS_S26_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_R2 Phases=3 Windings=2
+~ Buses=[Bus_SS_23_HV, Bus_SS_R2_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_R3 Phases=3 Windings=2
+~ Buses=[Bus_SS_24_HV, Bus_SS_R3_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_R6 Phases=3 Windings=2
+~ Buses=[Bus_SS_25_HV, Bus_SS_R6_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_R7 Phases=3 Windings=2
+~ Buses=[Bus_SS_26_HV, Bus_SS_R7_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_K3 Phases=3 Windings=2
+~ Buses=[Bus_SS_27_HV, Bus_SS_K3_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_K32 Phases=3 Windings=2
+~ Buses=[Bus_SS_28_HV, Bus_SS_K32_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_M44 Phases=3 Windings=2
+~ Buses=[Bus_SS_29_HV, Bus_SS_M44_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_T2 Phases=3 Windings=2
+~ Buses=[Bus_SS_30_HV, Bus_SS_T2_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_MOPOL Phases=3 Windings=2
+~ Buses=[Bus_SS_31_HV, Bus_SS_MOPOL_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_K2 Phases=3 Windings=2
+~ Buses=[Bus_SS_32_HV, Bus_SS_K2_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_NIPP Phases=3 Windings=2
+~ Buses=[Bus_SS_33_HV, Bus_SS_NIPP_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_B32 Phases=3 Windings=2
+~ Buses=[Bus_SS_35_HV, Bus_SS_B32_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_C2 Phases=3 Windings=2
+~ Buses=[Bus_SS_36_HV, Bus_SS_C2_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_M2 Phases=3 Windings=2
+~ Buses=[Bus_SS_38_HV, Bus_SS_M2_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_FIELDBASE Phases=3 Windings=2
+~ Buses=[Bus_SS_39_HV, Bus_SS_FIELDBASE_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_F2 Phases=3 Windings=2
+~ Buses=[Bus_SS_41_HV, Bus_SS_F2_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_S3_KANTOMA Phases=3 Windings=2
+~ Buses=[Bus_SS_42_HV, Bus_SS_S3_KANTOMA_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_A22 Phases=3 Windings=2
+~ Buses=[Bus_SS_44_HV, Bus_SS_A22_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_A23 Phases=3 Windings=2
+~ Buses=[Bus_SS_45_HV, Bus_SS_A23_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_J22 Phases=3 Windings=2
+~ Buses=[Bus_SS_46_HV, Bus_SS_J22_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_J32 Phases=3 Windings=2
+~ Buses=[Bus_SS_47_HV, Bus_SS_J32_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_L3 Phases=3 Windings=2
+~ Buses=[Bus_SS_49_HV, Bus_SS_L3_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_L4 Phases=3 Windings=2
+~ Buses=[Bus_SS_50_HV, Bus_SS_L4_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_L2 Phases=3 Windings=2
+~ Buses=[Bus_SS_51_HV, Bus_SS_L2_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_L5 Phases=3 Windings=2
+~ Buses=[Bus_SS_52_HV, Bus_SS_L5_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_B6 Phases=3 Windings=2
+~ Buses=[Bus_SS_53_HV, Bus_SS_B6_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_WUYE1 Phases=3 Windings=2
+~ Buses=[Bus_SS_54_HV, Bus_SS_WUYE1_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_WUYE2 Phases=3 Windings=2
+~ Buses=[Bus_SS_55_HV, Bus_SS_WUYE2_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_POWERHOUSE Phases=3 Windings=2
+~ Buses=[Bus_SS_56_HV, Bus_SS_POWERHOUSE_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_LIFE_CAMP_ESTATE Phases=3 Windings=2
+~ Buses=[Bus_SS_60_HV, Bus_SS_LIFE_CAMP_ESTATE_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_L14 Phases=3 Windings=2
+~ Buses=[Bus_SS_61_HV, Bus_SS_L14_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_L16 Phases=3 Windings=2
+~ Buses=[Bus_SS_62_HV, Bus_SS_L16_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_G25 Phases=3 Windings=2
+~ Buses=[Bus_SS_63_HV, Bus_SS_G25_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_K33 Phases=3 Windings=2
+~ Buses=[Bus_SS_64_HV, Bus_SS_K33_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_ICCG23 Phases=3 Windings=2
+~ Buses=[Bus_SS_65_HV, Bus_SS_ICCG23_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_A20 Phases=3 Windings=2
+~ Buses=[Bus_SS_66_HV, Bus_SS_A20_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_A28 Phases=3 Windings=2
+~ Buses=[Bus_SS_67_HV, Bus_SS_A28_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_K34 Phases=3 Windings=2
+~ Buses=[Bus_SS_68_HV, Bus_SS_K34_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_K35 Phases=3 Windings=2
+~ Buses=[Bus_SS_69_HV, Bus_SS_K35_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_WUSHISHI Phases=3 Windings=2
+~ Buses=[Bus_SS_70_HV, Bus_SS_WUSHISHI_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_KONTAGORA Phases=3 Windings=2
+~ Buses=[Bus_SS_71_HV, Bus_SS_KONTAGORA_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_S25 Phases=3 Windings=2
+~ Buses=[Bus_SS_72_HV, Bus_SS_S25_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_LOKOGOMA Phases=3 Windings=2
+~ Buses=[Bus_SS_73_HV, Bus_SS_LOKOGOMA_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_LOKOJA_MAIN Phases=3 Windings=2
+~ Buses=[Bus_SS_74_HV, Bus_SS_LOKOJA_MAIN_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_PAIKO Phases=3 Windings=2
+~ Buses=[Bus_SS_75_HV, Bus_SS_PAIKO_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_MAIKUNKELE Phases=3 Windings=2
+~ Buses=[Bus_SS_76_HV, Bus_SS_MAIKUNKELE_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_ZARUMAI Phases=3 Windings=2
+~ Buses=[Bus_SS_77_HV, Bus_SS_ZARUMAI_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_OSUWAYA Phases=3 Windings=2
+~ Buses=[Bus_SS_78_HV, Bus_SS_OSUWAYA_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_C4 Phases=3 Windings=2
+~ Buses=[Bus_SS_84_HV, Bus_SS_C4_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_NAF_VALLEY Phases=3 Windings=2
+~ Buses=[Bus_SS_90_HV, Bus_SS_NAF_VALLEY_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_MAIN_J Phases=3 Windings=2
+~ Buses=[Bus_SS_92_HV, Bus_SS_MAIN_J_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_AP_POLY Phases=3 Windings=2
+~ Buses=[Bus_SS_114_HV, Bus_SS_AP_POLY_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_AGAIE Phases=3 Windings=2
+~ Buses=[Bus_SS_115_HV, Bus_SS_AGAIE_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_BANK_FDR Phases=3 Windings=2
+~ Buses=[Bus_SS_116_HV, Bus_SS_BANK_FDR_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_FHA_ZUBA Phases=3 Windings=2
+~ Buses=[Bus_SS_117_HV, Bus_SS_FHA_ZUBA_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_B33TR1 Phases=3 Windings=2
+~ Buses=[Bus_SS_121_HV, Bus_SS_B33TR1_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_DOMA Phases=3 Windings=2
+~ Buses=[Bus_SS_123_HV, Bus_SS_DOMA_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_APO_RESETTLEMENT Phases=3 Windings=2
+~ Buses=[Bus_SS_124_HV, Bus_SS_APO_RESETTLEMENT_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_J33 Phases=3 Windings=2
+~ Buses=[Bus_SS_127_HV, Bus_SS_J33_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_SABON_WUSE Phases=3 Windings=2
+~ Buses=[Bus_SS_128_HV, Bus_SS_SABON_WUSE_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_TRADEMOREUNMANNED Phases=3 Windings=2
+~ Buses=[Bus_SS_130_HV, Bus_SS_TRADEMOREUNMANNED_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_S8_MADALLA Phases=3 Windings=2
+~ Buses=[Bus_SS_131_HV, Bus_SS_S8_MADALLA_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_BAT Phases=3 Windings=2
+~ Buses=[Bus_SS_132_HV, Bus_SS_BAT_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_UNI_ABUJA Phases=3 Windings=2
+~ Buses=[Bus_SS_133_HV, Bus_SS_UNI_ABUJA_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_B33TR2 Phases=3 Windings=2
+~ Buses=[Bus_SS_134_HV, Bus_SS_B33TR2_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_MPAPE_5MVA Phases=3 Windings=2
+~ Buses=[Bus_SS_220_HV, Bus_SS_MPAPE_5MVA_LV] kVA=10000 kV=[33, 11]
+New Transformer.TrMV_DEIDEI_2_5MVA_MARKET Phases=3 Windings=2
+~ Buses=[Bus_SS_221_HV, Bus_SS_DEIDEI_2_5MVA_MARKET_LV] kVA=10000 kV=[33, 11]

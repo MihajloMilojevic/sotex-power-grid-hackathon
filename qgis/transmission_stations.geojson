@@ -1,0 +1,341 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0,
+          9.0
+        ]
+      },
+      "properties": {
+        "id": 30,
+        "name": "OKENE",
+        "type": "TransmissionStation",
+        "level_kv": "400/110"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0002729,
+          9.001348982
+        ]
+      },
+      "properties": {
+        "id": 32,
+        "name": "LOKOJA",
+        "type": "TransmissionStation",
+        "level_kv": "400/110"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0,
+          9.0
+        ]
+      },
+      "properties": {
+        "id": 34,
+        "name": "AJAOKUTA",
+        "type": "TransmissionStation",
+        "level_kv": "400/110"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0,
+          9.0
+        ]
+      },
+      "properties": {
+        "id": 36,
+        "name": "BIDA",
+        "type": "TransmissionStation",
+        "level_kv": "400/110"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.3963465,
+          9.071522682
+        ]
+      },
+      "properties": {
+        "id": 37,
+        "name": "KONTAGORA",
+        "type": "TransmissionStation",
+        "level_kv": "400/110"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.989520487,
+          8.998081823
+        ]
+      },
+      "properties": {
+        "id": 38,
+        "name": "MINNA",
+        "type": "TransmissionStation",
+        "level_kv": "400/110"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0,
+          9.0
+        ]
+      },
+      "properties": {
+        "id": 40,
+        "name": "TEGINA",
+        "type": "TransmissionStation",
+        "level_kv": "400/110"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0,
+          9.0
+        ]
+      },
+      "properties": {
+        "id": 41,
+        "name": "LAFIA",
+        "type": "TransmissionStation",
+        "level_kv": "400/110"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.353324722,
+          9.134641625
+        ]
+      },
+      "properties": {
+        "id": 42,
+        "name": "AT4",
+        "type": "TransmissionStation",
+        "level_kv": "400/110"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.406886853,
+          9.071176237
+        ]
+      },
+      "properties": {
+        "id": 43,
+        "name": "AT6",
+        "type": "TransmissionStation",
+        "level_kv": "400/110"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.3957552,
+          9.071206082
+        ]
+      },
+      "properties": {
+        "id": 44,
+        "name": "AT7",
+        "type": "TransmissionStation",
+        "level_kv": "400/110"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0,
+          9.0
+        ]
+      },
+      "properties": {
+        "id": 45,
+        "name": "AT8",
+        "type": "TransmissionStation",
+        "level_kv": "400/110"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.578147161,
+          9.021317621
+        ]
+      },
+      "properties": {
+        "id": 46,
+        "name": "AT9",
+        "type": "TransmissionStation",
+        "level_kv": "400/110"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.06350959,
+          8.854198112
+        ]
+      },
+      "properties": {
+        "id": 47,
+        "name": "GW",
+        "type": "TransmissionStation",
+        "level_kv": "400/110"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.451975648,
+          9.053544757
+        ]
+      },
+      "properties": {
+        "id": 48,
+        "name": "KUKWABA",
+        "type": "TransmissionStation",
+        "level_kv": "400/110"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0,
+          9.0
+        ]
+      },
+      "properties": {
+        "id": 49,
+        "name": "SHIRORO",
+        "type": "TransmissionStation",
+        "level_kv": "400/110"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.493413245,
+          9.130578014
+        ]
+      },
+      "properties": {
+        "id": 60,
+        "name": "KATAMPE 2",
+        "type": "TransmissionStation",
+        "level_kv": "400/110"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.508753358,
+          9.03907183
+        ]
+      },
+      "properties": {
+        "id": 61,
+        "name": "AT3",
+        "type": "TransmissionStation",
+        "level_kv": "400/110"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.492308613,
+          9.07708136
+        ]
+      },
+      "properties": {
+        "id": 63,
+        "name": "AT5",
+        "type": "TransmissionStation",
+        "level_kv": "400/110"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.426706551,
+          9.111686036
+        ]
+      },
+      "properties": {
+        "id": 98,
+        "name": "GIS DAWAKI",
+        "type": "TransmissionStation",
+        "level_kv": "400/110"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.480392739,
+          9.074027597
+        ]
+      },
+      "properties": {
+        "id": 101,
+        "name": "KATAMPE 1",
+        "type": "TransmissionStation",
+        "level_kv": "400/110"
+      }
+    }
+  ]
+}

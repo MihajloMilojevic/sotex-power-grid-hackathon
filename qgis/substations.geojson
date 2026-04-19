@@ -1,0 +1,1397 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.4920255,
+          9.0727956
+        ]
+      },
+      "properties": {
+        "id": 1,
+        "name": "B5",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.4692725,
+          9.0709806
+        ]
+      },
+      "properties": {
+        "id": 2,
+        "name": "B52",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.5191133,
+          9.0850335
+        ]
+      },
+      "properties": {
+        "id": 5,
+        "name": "G2",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.493886,
+          9.0556736
+        ]
+      },
+      "properties": {
+        "id": 6,
+        "name": "G42",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.491264,
+          9.022622
+        ]
+      },
+      "properties": {
+        "id": 7,
+        "name": "G22",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.4965535,
+          9.0304201
+        ]
+      },
+      "properties": {
+        "id": 8,
+        "name": "G4",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0,
+          9.0
+        ]
+      },
+      "properties": {
+        "id": 9,
+        "name": "L15",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.4257625,
+          9.1029409
+        ]
+      },
+      "properties": {
+        "id": 10,
+        "name": "M42",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.4227833,
+          9.1142426
+        ]
+      },
+      "properties": {
+        "id": 11,
+        "name": "M43",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.4454277,
+          9.1251575
+        ]
+      },
+      "properties": {
+        "id": 12,
+        "name": "T1",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.4876221,
+          9.1407587
+        ]
+      },
+      "properties": {
+        "id": 13,
+        "name": "C3",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.4763291,
+          9.0483652
+        ]
+      },
+      "properties": {
+        "id": 14,
+        "name": "G24",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.4871623,
+          9.0171524
+        ]
+      },
+      "properties": {
+        "id": 15,
+        "name": "G32",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.3741043,
+          8.9884961
+        ]
+      },
+      "properties": {
+        "id": 16,
+        "name": "E2",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.5087157,
+          9.058771
+        ]
+      },
+      "properties": {
+        "id": 17,
+        "name": "R4",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.5186413,
+          9.099792
+        ]
+      },
+      "properties": {
+        "id": 18,
+        "name": "R5",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.4948839,
+          9.004804
+        ]
+      },
+      "properties": {
+        "id": 19,
+        "name": "S22",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.4356518,
+          9.0096048
+        ]
+      },
+      "properties": {
+        "id": 20,
+        "name": "S23",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.4731944,
+          8.9920722
+        ]
+      },
+      "properties": {
+        "id": 21,
+        "name": "S24",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.5059808,
+          9.0011468
+        ]
+      },
+      "properties": {
+        "id": 22,
+        "name": "S26",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.5198985,
+          9.037434
+        ]
+      },
+      "properties": {
+        "id": 23,
+        "name": "R2",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.5128406,
+          9.0165576
+        ]
+      },
+      "properties": {
+        "id": 24,
+        "name": "R3",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.4982021,
+          9.0535782
+        ]
+      },
+      "properties": {
+        "id": 25,
+        "name": "R6",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.5025798,
+          9.0046087
+        ]
+      },
+      "properties": {
+        "id": 26,
+        "name": "R7",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.3363444,
+          9.3241375
+        ]
+      },
+      "properties": {
+        "id": 27,
+        "name": "K3",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.4033066,
+          9.2085795
+        ]
+      },
+      "properties": {
+        "id": 28,
+        "name": "K32",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.3937615,
+          9.1181092
+        ]
+      },
+      "properties": {
+        "id": 29,
+        "name": "M44",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.3705444,
+          9.1424994
+        ]
+      },
+      "properties": {
+        "id": 30,
+        "name": "T2",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.2854625,
+          9.1394143
+        ]
+      },
+      "properties": {
+        "id": 31,
+        "name": "MOPOL",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.4042415,
+          9.0590057
+        ]
+      },
+      "properties": {
+        "id": 32,
+        "name": "K2",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.3114265,
+          9.1342793
+        ]
+      },
+      "properties": {
+        "id": 33,
+        "name": "NIPP",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.477295,
+          9.0701857
+        ]
+      },
+      "properties": {
+        "id": 35,
+        "name": "B32",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.4856695,
+          9.0889235
+        ]
+      },
+      "properties": {
+        "id": 36,
+        "name": "C2",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.3770669,
+          9.0745458
+        ]
+      },
+      "properties": {
+        "id": 38,
+        "name": "M2",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.3963465,
+          9.0701737
+        ]
+      },
+      "properties": {
+        "id": 39,
+        "name": "FIELDBASE",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.4048964,
+          9.0586845
+        ]
+      },
+      "properties": {
+        "id": 41,
+        "name": "F2",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.4277595,
+          9.0757876
+        ]
+      },
+      "properties": {
+        "id": 42,
+        "name": "S3/KANTOMA",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.5819571,
+          9.0251615
+        ]
+      },
+      "properties": {
+        "id": 44,
+        "name": "A22",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.5786073,
+          9.0466123
+        ]
+      },
+      "properties": {
+        "id": 45,
+        "name": "A23",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.5868278,
+          9.014323
+        ]
+      },
+      "properties": {
+        "id": 46,
+        "name": "J22",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.6677421,
+          9.0086501
+        ]
+      },
+      "properties": {
+        "id": 47,
+        "name": "J32",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.9581344,
+          8.4661426
+        ]
+      },
+      "properties": {
+        "id": 49,
+        "name": "L3",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0425926,
+          8.8241676
+        ]
+      },
+      "properties": {
+        "id": 50,
+        "name": "L4",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.050764,
+          8.9383723
+        ]
+      },
+      "properties": {
+        "id": 51,
+        "name": "L2",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.2062216,
+          8.8767473
+        ]
+      },
+      "properties": {
+        "id": 52,
+        "name": "L5",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.4512125,
+          9.066117
+        ]
+      },
+      "properties": {
+        "id": 53,
+        "name": "B6",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.4265601,
+          9.0410316
+        ]
+      },
+      "properties": {
+        "id": 54,
+        "name": "WUYE1",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.4539539,
+          9.0578387
+        ]
+      },
+      "properties": {
+        "id": 55,
+        "name": "WUYE2",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.3957552,
+          9.0698571
+        ]
+      },
+      "properties": {
+        "id": 56,
+        "name": "POWERHOUSE",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.394781201,
+          9.065532949
+        ]
+      },
+      "properties": {
+        "id": 60,
+        "name": "LIFE CAMP ESTATE",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0,
+          9.0
+        ]
+      },
+      "properties": {
+        "id": 61,
+        "name": "L14",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0,
+          9.0
+        ]
+      },
+      "properties": {
+        "id": 62,
+        "name": "L16",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.4852562,
+          9.0485741
+        ]
+      },
+      "properties": {
+        "id": 63,
+        "name": "G25",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0,
+          9.0
+        ]
+      },
+      "properties": {
+        "id": 64,
+        "name": "K33",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0,
+          9.0
+        ]
+      },
+      "properties": {
+        "id": 65,
+        "name": "ICC(G23)",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.3957552,
+          9.0698571
+        ]
+      },
+      "properties": {
+        "id": 66,
+        "name": "A20",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0,
+          9.0
+        ]
+      },
+      "properties": {
+        "id": 67,
+        "name": "A28",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0,
+          9.0
+        ]
+      },
+      "properties": {
+        "id": 68,
+        "name": "K34",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0,
+          9.0
+        ]
+      },
+      "properties": {
+        "id": 69,
+        "name": "K35",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0,
+          9.0
+        ]
+      },
+      "properties": {
+        "id": 70,
+        "name": "WUSHISHI",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.3963465,
+          9.0701737
+        ]
+      },
+      "properties": {
+        "id": 71,
+        "name": "KONTAGORA",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.4494748,
+          9.0331684
+        ]
+      },
+      "properties": {
+        "id": 72,
+        "name": "S25",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0002729,
+          9.0
+        ]
+      },
+      "properties": {
+        "id": 73,
+        "name": "LOKOGOMA",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0,
+          9.0
+        ]
+      },
+      "properties": {
+        "id": 74,
+        "name": "LOKOJA MAIN",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0,
+          9.0
+        ]
+      },
+      "properties": {
+        "id": 75,
+        "name": "PAIKO",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0002729,
+          9.0
+        ]
+      },
+      "properties": {
+        "id": 76,
+        "name": "MAIKUNKELE",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.9996817,
+          8.9996834
+        ]
+      },
+      "properties": {
+        "id": 77,
+        "name": "ZARUMAI",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0,
+          9.0
+        ]
+      },
+      "properties": {
+        "id": 78,
+        "name": "OSUWAYA",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.4790988,
+          9.0854324
+        ]
+      },
+      "properties": {
+        "id": 84,
+        "name": "C4",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.5444391,
+          9.0377983
+        ]
+      },
+      "properties": {
+        "id": 90,
+        "name": "NAF VALLEY",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.0,
+          6.0
+        ]
+      },
+      "properties": {
+        "id": 92,
+        "name": "MAIN J",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0,
+          9.0
+        ]
+      },
+      "properties": {
+        "id": 114,
+        "name": "AP POLY",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0,
+          9.0
+        ]
+      },
+      "properties": {
+        "id": 115,
+        "name": "AGAIE",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0,
+          9.0
+        ]
+      },
+      "properties": {
+        "id": 116,
+        "name": "BANK FDR",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0,
+          9.0
+        ]
+      },
+      "properties": {
+        "id": 117,
+        "name": "FHA ZUBA",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.505034,
+          9.064942
+        ]
+      },
+      "properties": {
+        "id": 121,
+        "name": "B33(TR1)",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0,
+          9.0
+        ]
+      },
+      "properties": {
+        "id": 123,
+        "name": "DOMA",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.5041075,
+          8.9639482
+        ]
+      },
+      "properties": {
+        "id": 124,
+        "name": "APO RESETTLEMENT",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.6401824,
+          9.0098901
+        ]
+      },
+      "properties": {
+        "id": 127,
+        "name": "J33",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.3957552,
+          9.0698571
+        ]
+      },
+      "properties": {
+        "id": 128,
+        "name": "SABON WUSE",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.3716765,
+          8.9601091
+        ]
+      },
+      "properties": {
+        "id": 130,
+        "name": "TRADEMORE(UNMANNED)",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.2569852,
+          9.1227583
+        ]
+      },
+      "properties": {
+        "id": 131,
+        "name": "S8 MADALLA",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.5518694,
+          9.0513624
+        ]
+      },
+      "properties": {
+        "id": 132,
+        "name": "BAT",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.0,
+          9.0
+        ]
+      },
+      "properties": {
+        "id": 133,
+        "name": "UNI ABUJA",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.3854302,
+          9.0746719
+        ]
+      },
+      "properties": {
+        "id": 134,
+        "name": "B33(TR2)",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.4974376,
+          9.1235033
+        ]
+      },
+      "properties": {
+        "id": 220,
+        "name": "MPAPE_5MVA",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.2777025,
+          9.1005217
+        ]
+      },
+      "properties": {
+        "id": 221,
+        "name": "DEIDEI 2.5MVA MARKET",
+        "type": "Substation",
+        "level_kv": "110/35"
+      }
+    }
+  ]
+}

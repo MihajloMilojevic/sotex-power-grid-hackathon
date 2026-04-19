@@ -1,0 +1,4 @@
+! Standard line codes (R/X in ohm/km, C in nF/km)
+New LineCode.33kV_Standard  nphases=3 r1=0.1  x1=0.30 r0=0.30 x0=0.90 c1=3.4 c0=1.6 units=km
+New LineCode.11kV_Standard  nphases=3 r1=0.2  x1=0.35 r0=0.50 x0=1.00 c1=3.0 c0=1.2 units=km
+New LineCode.LV_Standard    nphases=3 r1=0.5  x1=0.10 r0=1.50 x0=0.30 c1=1.0 c0=0.5 units=km

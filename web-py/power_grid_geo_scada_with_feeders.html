@@ -1,0 +1,332 @@
+
+<h2 class="sr-only">Power Grid Digital Twin — geographic SCADA map with DT cluster dots always visible and open convex hull polylines per feeder group.</h2>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css"/>
+<style>
+#map{height:440px;border-radius:var(--border-radius-md);border:.5px solid var(--color-border-tertiary)}
+.leaflet-container{background:var(--color-background-secondary)!important;font-family:var(--font-sans)!important}
+.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:var(--color-background-primary)!important;box-shadow:none!important}
+.leaflet-popup-content-wrapper{color:var(--color-text-primary);border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md)!important;font-size:12px;line-height:1.7;min-width:160px}
+.leaflet-control-zoom a{background:var(--color-background-primary)!important;color:var(--color-text-primary)!important;border-color:var(--color-border-secondary)!important}
+.marker-cluster div{width:30px;height:30px;margin:5px;text-align:center;border-radius:15px;font:bold 11px var(--font-sans);color:#fff;line-height:30px}
+.marker-cluster-small div{background:rgba(99,153,34,.85)}
+.marker-cluster-medium div{background:rgba(186,117,23,.85)}
+.marker-cluster-large div{background:rgba(163,45,45,.85)}
+.marker-cluster{background:transparent!important}
+@keyframes pl{0%,100%{opacity:1}50%{opacity:.3}}
+.lv{display:flex;align-items:center;gap:5px;background:var(--color-background-success);color:var(--color-text-success);padding:2px 9px;border-radius:var(--border-radius-md);font-size:11px;font-weight:500}
+.ld{width:6px;height:6px;border-radius:50%;background:currentColor;animation:pl 1.6s infinite}
+.mc{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:7px 9px;margin-bottom:5px}
+.mv{font-size:16px;font-weight:500;color:var(--color-text-primary);margin:1px 0 0}
+.ml{font-size:10px;color:var(--color-text-secondary)}
+.cb{padding:4px 10px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:transparent;font-size:11px;color:var(--color-text-secondary);cursor:not-allowed;opacity:.4;font-family:var(--font-sans)}
+.sw{display:inline-block;border-radius:50%;vertical-align:middle;flex-shrink:0}
+#load-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);z-index:1000;font-size:12px;color:var(--color-text-secondary)}
+#map-wrap{position:relative}
+.zoom-bar{display:flex;align-items:center;gap:0;margin-bottom:10px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);overflow:hidden;font-size:11px}
+.zs{padding:5px 10px;color:var(--color-text-tertiary);flex:1;text-align:center;border-right:.5px solid var(--color-border-tertiary);transition:background .15s,color .15s}
+.zs:last-child{border-right:none}
+.zs.active{background:var(--color-background-secondary);color:var(--color-text-primary);font-weight:500}
+.err{background:var(--color-background-danger);color:var(--color-text-danger);padding:7px 11px;border-radius:var(--border-radius-md);font-size:11px;margin-bottom:10px;display:none}
+</style>
+
+<div style="display:flex;align-items:center;gap:10px;padding-bottom:10px;border-bottom:.5px solid var(--color-border-tertiary);margin-bottom:12px">
+  <div>
+    <div style="font-size:15px;font-weight:500;color:var(--color-text-primary)">Grid Digital Twin</div>
+    <div style="font-size:11px;color:var(--color-text-secondary)">Nigeria · 27 TS · 87 SS · 13 000 DT · convex hull topology</div>
+  </div>
+  <div style="flex:1"></div>
+  <div class="lv"><span class="ld"></span>LIVE</div>
+</div>
+
+<div id="err-banner" class="err"></div>
+
+<div class="zoom-bar">
+  <div class="zs" id="zs-1"><div>TS + DT clusters</div><div style="font-size:9px;opacity:.65">zoom &lt; 7</div></div>
+  <div class="zs" id="zs-2"><div>+ SS · F33 hulls</div><div style="font-size:9px;opacity:.65">zoom 7–8</div></div>
+  <div class="zs" id="zs-3"><div>+ F11 hulls</div><div style="font-size:9px;opacity:.65">zoom 9–10</div></div>
+  <div class="zs" id="zs-4"><div>DT dots expand</div><div style="font-size:9px;opacity:.65">zoom 11+</div></div>
+</div>
+
+<div style="display:flex;gap:10px">
+  <div id="map-wrap" style="flex:1;min-width:0">
+    <div id="map"></div>
+    <div id="load-overlay">
+      <svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="none" stroke="var(--color-border-secondary)" stroke-width="2"/><path d="M10 2 A8 8 0 0 1 18 10" fill="none" stroke="var(--color-text-secondary)" stroke-width="2" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" from="0 10 10" to="360 10 10" dur=".7s" repeatCount="indefinite"/></path></svg>
+      <span id="load-msg">Loading…</span>
+    </div>
+  </div>
+
+  <div style="width:130px;flex-shrink:0">
+    <div style="font-size:10px;font-weight:500;color:var(--color-text-secondary);letter-spacing:.07em;margin-bottom:8px">GRID STATUS</div>
+    <div class="mc"><div class="ml">Transmission</div><div class="mv" id="s-ts">—</div></div>
+    <div class="mc"><div class="ml">Substations</div><div class="mv" id="s-ss">—</div></div>
+    <div class="mc"><div class="ml">Transformers</div><div class="mv" id="s-dt">—</div></div>
+    <div class="mc"><div class="ml">F33 feeder groups</div><div class="mv" id="s-f33">—</div></div>
+    <div class="mc"><div class="ml">F11 feeder groups</div><div class="mv" id="s-f11">—</div></div>
+    <div class="mc"><div class="ml">Critical &gt;90%</div><div class="mv" style="color:var(--color-text-danger)" id="s-crit">—</div></div>
+    <div class="mc"><div class="ml">Avg load</div><div class="mv" id="s-avg">—</div></div>
+    <div style="margin-top:10px;padding-top:10px;border-top:.5px solid var(--color-border-tertiary)">
+      <div style="font-size:10px;font-weight:500;color:var(--color-text-secondary);margin-bottom:6px">LEGEND</div>
+      <div style="font-size:10px;color:var(--color-text-secondary);line-height:2.1">
+        <span class="sw" style="background:#7F77DD;width:10px;height:10px;margin-right:5px"></span>TS<br>
+        <span class="sw" style="background:#378ADD;width:7px;height:7px;margin-right:5px"></span>SS<br>
+        <span style="display:inline-block;width:18px;height:0;border-top:2px solid #1D9E75;margin-right:5px;vertical-align:middle"></span>F33 hull<br>
+        <span style="display:inline-block;width:18px;height:0;border-top:2px solid #639922;margin-right:5px;vertical-align:middle"></span>F11 &lt;70%<br>
+        <span style="display:inline-block;width:18px;height:0;border-top:2px solid #BA7517;margin-right:5px;vertical-align:middle"></span>F11 70–90%<br>
+        <span style="display:inline-block;width:18px;height:0;border-top:2px dashed #A32D2D;margin-right:5px;vertical-align:middle"></span>F11 &gt;90%<br>
+        <span class="sw" style="background:#639922;width:5px;height:5px;margin-right:5px"></span>DT &lt;70%<br>
+        <span class="sw" style="background:#BA7517;width:5px;height:5px;margin-right:5px"></span>DT 70–90%<br>
+        <span class="sw" style="background:#A32D2D;width:5px;height:5px;margin-right:5px"></span>DT &gt;90%
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:11px;padding-top:10px;border-top:.5px solid var(--color-border-tertiary);display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+  <div>
+    <div style="font-size:12px;font-weight:500;color:var(--color-text-primary)">Chaos Monkey</div>
+    <div style="font-size:11px;color:var(--color-text-secondary)">Select a node on the map to activate simulation</div>
+  </div>
+  <div style="flex:1;min-width:16px"></div>
+  <button class="cb" disabled>Kill selected node</button>
+  <button class="cb" disabled>Random failure</button>
+  <button class="cb" disabled>Run scenario ▾</button>
+  <div style="font-size:11px;color:var(--color-text-tertiary);border-left:.5px solid var(--color-border-tertiary);padding-left:10px;line-height:1.6">Cascade impact<br>shown here</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.js"></script>
+<script>
+const API_BASE = 'http://localhost:8000/api/v1';
+
+// Andrew's monotone chain — returns hull vertices in order (open, not closed)
+function convexHull(pts) {
+  if (pts.length <= 2) return pts;
+  const s = [...pts].sort((a,b) => a[1]-b[1] || a[0]-b[0]);
+  const cross = (O,A,B) => (A[1]-O[1])*(B[0]-O[0]) - (A[0]-O[0])*(B[1]-O[1]);
+  const lower = [];
+  for (const p of s) {
+    while (lower.length >= 2 && cross(lower[lower.length-2], lower[lower.length-1], p) <= 0) lower.pop();
+    lower.push(p);
+  }
+  const upper = [];
+  for (let i = s.length-1; i >= 0; i--) {
+    const p = s[i];
+    while (upper.length >= 2 && cross(upper[upper.length-2], upper[upper.length-1], p) <= 0) upper.pop();
+    upper.push(p);
+  }
+  lower.pop(); upper.pop();
+  // Return as open path: lower hull + upper hull, no closing segment
+  return [...lower, ...upper];
+}
+
+const lc = l => l>90?'#A32D2D':l>70?'#BA7517':'#639922';
+
+const map = L.map('map',{preferCanvas:true,attributionControl:false, maxZoom:16});
+map.fitBounds([[4.2,2.5],[14.0,14.8]],{padding:[12,12]});
+
+const NG=[[13.9,14.6],[12.4,14.6],[11.0,14.2],[9.0,13.5],[7.0,13.8],[5.5,12.8],[4.5,8.7],[4.3,7.5],[4.3,6.0],[5.0,5.0],[6.4,3.4],[6.4,2.7],[7.5,2.7],[9.0,2.9],[11.0,3.4],[12.5,3.6],[13.0,4.2],[13.9,4.2],[13.9,7.0],[13.5,9.5],[13.0,11.0],[13.1,13.0],[13.9,14.6]];
+L.polygon(NG,{color:'#888780',weight:.8,fillColor:'#888780',fillOpacity:.06,dashArray:'4,4'}).addTo(map);
+
+// DT cluster — added directly to map, always visible
+// MarkerCluster handles aggregation at every zoom level automatically
+const dtCluster = L.markerClusterGroup({
+  chunkedLoading: true,
+  chunkInterval: 30,
+  chunkDelay: 50,
+  maxClusterRadius: 40,
+  showCoverageOnHover: false,
+  spiderfyOnMaxZoom: true,
+  disableClusteringAtZoom: 14,
+  iconCreateFunction(c) {
+    const loads = c.getAllChildMarkers().map(m => m.options._load || 50);
+    const avg = loads.reduce((a,b)=>a+b,0) / loads.length;
+    const cls = avg>90?'large':avg>70?'medium':'small';
+    return L.divIcon({
+      html: `<div><span>${c.getChildCount()}</span></div>`,
+      className: `marker-cluster marker-cluster-${cls}`,
+      iconSize: [40,40]
+    });
+  }
+});
+dtCluster.addTo(map);  // always on map — no zoom gating
+
+const LYR = {
+  ts:       L.layerGroup().addTo(map),
+  ss:       L.layerGroup(),
+  f33hulls: L.layerGroup(),
+  f11hulls: L.layerGroup(),
+};
+
+const Z_SS=7, Z_F11=9;
+
+function applyZoom() {
+  const z = map.getZoom();
+  const show = k => { if (!map.hasLayer(LYR[k])) map.addLayer(LYR[k]); };
+  const hide = k => { if  (map.hasLayer(LYR[k])) map.removeLayer(LYR[k]); };
+
+  z>=Z_SS  ? (show('ss'), show('f33hulls')) : (hide('ss'), hide('f33hulls'));
+  z>=Z_F11 ? show('f11hulls') : hide('f11hulls');
+
+  const idx = z>=Z_F11 ? (z>=11?4:3) : (z>=Z_SS?2:1);
+  for (let i=1;i<=4;i++)
+    document.getElementById('zs-'+i).classList.toggle('active', i===idx);
+}
+
+map.on('zoomend', applyZoom);
+
+function nodePopup(n) {
+  const kva = n.kva ? (n.kva>=1000 ? (n.kva/1000).toFixed(0)+' MVA' : n.kva+' kVA') : '—';
+  return `<b style="font-size:13px">${n.id}</b><br>`
+    +`<span style="color:var(--color-text-secondary);font-size:11px">${n.name}</span><br>`
+    +`Load: <b style="color:${lc(n.load||50)}">${n.load}%</b>`
+    +(n.kva ? ` &nbsp;·&nbsp; ${kva}` : '')
+    +`<br><span style="font-size:10px;color:var(--color-text-tertiary)">${n.lat.toFixed(5)}°N ${n.lon.toFixed(5)}°E</span>`;
+}
+
+function hullPopup(g) {
+  return `<b style="font-size:13px">${g.feeder_name}</b><br>`
+    +`<span style="color:var(--color-text-secondary);font-size:11px">${g.feeder_type.replace('_',' ')} feeder</span><br>`
+    +`<b>${g.node_count}</b> nodes &nbsp;·&nbsp; load: <b style="color:${lc(g.load)}">${g.load}%</b><br>`
+    +`<span style="font-size:10px;color:var(--color-text-tertiary)">Parent: ${g.parent_id}</span>`;
+}
+
+function render(data) {
+  // Feeder hulls — drawn as POLYLINES (open path, does not close back)
+  data.feeder_groups.forEach(g => {
+    const pts = g.node_coords;
+    if (!pts || pts.length < 2) return;
+
+    const isF33 = g.feeder_type === 'F33';
+    const color = isF33 ? '#1D9E75' : lc(g.load);
+    const opts = { color, weight: isF33?2:1.5, opacity:.85 };
+    if (!isF33 && g.load > 90) opts.dashArray = '6,3';
+
+    const lyrKey = isF33 ? 'f33hulls' : 'f11hulls';
+    const path = pts.length >= 3 ? convexHull(pts) : pts;
+
+    // L.polyline — open path, never closes back to start
+    L.polyline(path, opts)
+      .bindPopup(hullPopup(g), {closeButton:false, maxWidth:220})
+      .addTo(LYR[lyrKey]);
+  });
+
+  // SS dots
+  data.nodes.filter(n=>n.type==='SS').forEach(n => {
+    L.circleMarker([n.lat,n.lon], {
+      radius:5, fillColor:'#378ADD', color:'#0C447C', weight:.8, fillOpacity:.9
+    }).bindPopup(nodePopup(n),{closeButton:false,maxWidth:220}).addTo(LYR.ss);
+  });
+
+  // DT dots — add all to the cluster group
+  const dtMs = data.nodes.filter(n=>n.type==='DT').map(n =>
+    L.circleMarker([n.lat,n.lon], {
+      radius: 4,
+      fillColor: lc(n.load||50),
+      color: 'transparent',
+      weight: 0,
+      fillOpacity: .85,
+      _load: n.load||50
+    }).bindPopup(nodePopup(n),{closeButton:false,maxWidth:220})
+  );
+  dtCluster.addLayers(dtMs);
+
+  // TS dots — always on top
+  data.nodes.filter(n=>n.type==='TS').forEach(n => {
+    L.circleMarker([n.lat,n.lon], {
+      radius:11, fillColor:'#7F77DD', color:'#3C3489', weight:1.5, fillOpacity:.95
+    }).bindPopup(nodePopup(n),{closeButton:false,maxWidth:220}).addTo(LYR.ts);
+  });
+
+  const s = data.stats;
+  document.getElementById('s-ts').textContent   = (s.ts_count||0).toLocaleString();
+  document.getElementById('s-ss').textContent   = (s.ss_count||0).toLocaleString();
+  document.getElementById('s-dt').textContent   = (s.dt_count||0).toLocaleString();
+  document.getElementById('s-f33').textContent  = (s.f33_group_count||0).toLocaleString();
+  document.getElementById('s-f11').textContent  = (s.f11_group_count||0).toLocaleString();
+  document.getElementById('s-crit').textContent = (s.critical_count||0).toLocaleString();
+  document.getElementById('s-avg').textContent  = (s.avg_load||0)+'%';
+  document.getElementById('load-overlay').style.display = 'none';
+  applyZoom();
+}
+
+async function loadData() {
+  try {
+    const res = await fetch(`${API_BASE}/topology/geo`,{signal:AbortSignal.timeout(5000)});
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    render(await res.json());
+  } catch {
+    document.getElementById('err-banner').style.display = 'block';
+    document.getElementById('err-banner').textContent =
+      `API not reachable at ${API_BASE} — showing mock data. Run: uvicorn main:app --reload`;
+    loadMock();
+  }
+}
+
+function loadMock() {
+  document.getElementById('load-msg').textContent = 'Building mock data…';
+  setTimeout(() => {
+    function mkRng(s){let v=s>>>0;return()=>{v^=v<<13;v^=v>>>17;v^=v<<5;return(v>>>0)/4294967296}}
+    const r = mkRng(42);
+    const jit = (la,lo,sp) => [
+      Math.max(4.5, Math.min(13.7, la+(r()-.5)*sp)),
+      Math.max(3.0, Math.min(14.5, lo+(r()-.5)*sp))
+    ];
+    const SEEDS=[[6.5,3.4],[6.8,3.7],[7.3,4.0],[6.6,3.1],[7.0,3.6],[4.8,7.0],[6.3,7.5],[5.5,7.3],[5.0,8.0],[7.0,7.8],[9.1,7.4],[9.5,8.0],[8.5,7.0],[10.0,8.5],[9.8,7.0],[12.0,8.5],[10.5,7.4],[13.0,5.2],[11.5,6.5],[11.8,13.2],[10.5,11.5],[9.5,12.5],[12.5,13.9],[8.0,5.5],[7.5,6.5],[11.0,9.5],[10.0,4.5]];
+
+    const nodes=[], fgF33=[], fgF11=[], tsNodes=[], ssNodes=[];
+
+    SEEDS.forEach((seed,i) => {
+      const [la,lo] = jit(seed[0],seed[1],.1);
+      const n = {id:`TS-${i+1}`,type:'TS',name:`Transmission Stn ${i+1}`,lat:la,lon:lo,load:30+Math.floor(r()*50)};
+      tsNodes.push(n); nodes.push(n);
+    });
+
+    tsNodes.forEach((t,ti) => {
+      const cnt = ti<6?4:3;
+      const gc = [[t.lat,t.lon]], gi = [t.id];
+      for (let i=0;i<cnt;i++) {
+        const [la,lo] = jit(t.lat,t.lon,.9);
+        const n = {id:`SS-${ssNodes.length+1}`,type:'SS',name:`Substation ${ssNodes.length+1}`,lat:la,lon:lo,load:30+Math.floor(r()*60)};
+        ssNodes.push(n); nodes.push(n); gc.push([la,lo]); gi.push(n.id);
+      }
+      fgF33.push({feeder_id:ti+1,feeder_name:`F33-${ti+1}`,feeder_type:'F33',
+        parent_id:t.id,node_ids:gi,node_coords:gc,load:30+Math.floor(r()*60),node_count:gc.length});
+    });
+
+    const DT_TOTAL=13000, FG_TOTAL=600;
+    let dtCount=0;
+    for (let fgi=0; fgi<FG_TOTAL&&dtCount<DT_TOTAL; fgi++) {
+      const ps = ssNodes[fgi % ssNodes.length];
+      const load = 25+Math.floor(r()*70);
+      const [bLa,bLo] = jit(ps.lat,ps.lon,.25);
+      const gc = [[ps.lat,ps.lon]], gi = [ps.id];
+      const perFg = Math.ceil((DT_TOTAL-dtCount) / (FG_TOTAL-fgi));
+      for (let di=0; di<perFg&&dtCount<DT_TOTAL; di++) {
+        const [la,lo] = jit(bLa,bLo,.15);
+        const did = ++dtCount;
+        const n = {id:`DT-${did}`,type:'DT',name:`Transformer ${did}`,lat:la,lon:lo,
+          load:Math.max(20,Math.min(100,load+Math.floor((r()-.5)*30))),kva:200+Math.floor(r()*800)};
+        nodes.push(n); gc.push([la,lo]); gi.push(n.id);
+      }
+      fgF11.push({feeder_id:fgi+1,feeder_name:`F11-${fgi+1}`,feeder_type:'F11',
+        parent_id:ps.id,node_ids:gi,node_coords:gc,load,node_count:gc.length});
+    }
+
+    const loads = nodes.map(n=>n.load);
+    render({
+      nodes, feeder_groups:[...fgF33,...fgF11],
+      stats:{
+        ts_count:tsNodes.length, ss_count:ssNodes.length, dt_count:dtCount,
+        f33_group_count:fgF33.length, f11_group_count:fgF11.length,
+        critical_count:loads.filter(l=>l>90).length,
+        avg_load:Math.round(loads.reduce((a,b)=>a+b,0)/loads.length),
+      }
+    });
+  }, 50);
+}
+
+loadData();
+</script>

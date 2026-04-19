@@ -1,0 +1,2155 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.480392739,
+            9.074027597
+          ],
+          [
+            7.4920255,
+            9.0727956
+          ]
+        ]
+      },
+      "properties": {
+        "id": 2,
+        "name": "132KV KATAMPE 1 TS_33KV WUSE II FDR_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "KATAMPE 1",
+        "to_name": "B5"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.480392739,
+            9.074027597
+          ],
+          [
+            7.4692725,
+            9.0709806
+          ]
+        ]
+      },
+      "properties": {
+        "id": 2,
+        "name": "132KV KATAMPE 1 TS_33KV WUSE II FDR_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "KATAMPE 1",
+        "to_name": "B52"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.480392739,
+            9.074027597
+          ],
+          [
+            7.4790988,
+            9.0854324
+          ]
+        ]
+      },
+      "properties": {
+        "id": 2,
+        "name": "132KV KATAMPE 1 TS_33KV WUSE II FDR_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "KATAMPE 1",
+        "to_name": "C4"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.492308613,
+            9.07708136
+          ],
+          [
+            7.5191133,
+            9.0850335
+          ]
+        ]
+      },
+      "properties": {
+        "id": 7,
+        "name": "132KV CENTRAL AREA TS_33KV FDR 5_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT5",
+        "to_name": "G2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.492308613,
+            9.07708136
+          ],
+          [
+            7.0,
+            9.0
+          ]
+        ]
+      },
+      "properties": {
+        "id": 7,
+        "name": "132KV CENTRAL AREA TS_33KV FDR 5_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT5",
+        "to_name": "ICC(G23)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.508753358,
+            9.03907183
+          ],
+          [
+            7.491264,
+            9.022622
+          ]
+        ]
+      },
+      "properties": {
+        "id": 8,
+        "name": "132KV APO TS_33KV FDR H1_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT3",
+        "to_name": "G22"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.508753358,
+            9.03907183
+          ],
+          [
+            7.4763291,
+            9.0483652
+          ]
+        ]
+      },
+      "properties": {
+        "id": 8,
+        "name": "132KV APO TS_33KV FDR H1_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT3",
+        "to_name": "G24"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.508753358,
+            9.03907183
+          ],
+          [
+            7.4852562,
+            9.0485741
+          ]
+        ]
+      },
+      "properties": {
+        "id": 8,
+        "name": "132KV APO TS_33KV FDR H1_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT3",
+        "to_name": "G25"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.0,
+            9.0
+          ],
+          [
+            7.0,
+            9.0
+          ]
+        ]
+      },
+      "properties": {
+        "id": 12,
+        "name": "33OKV APIR-LAFIA LINE 1&2_132KV LAFIA TS_33KV FDR A2_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "LAFIA",
+        "to_name": "L15"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.0,
+            9.0
+          ],
+          [
+            7.0,
+            9.0
+          ]
+        ]
+      },
+      "properties": {
+        "id": 12,
+        "name": "33OKV APIR-LAFIA LINE 1&2_132KV LAFIA TS_33KV FDR A2_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "LAFIA",
+        "to_name": "L14"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.0,
+            9.0
+          ],
+          [
+            7.0,
+            9.0
+          ]
+        ]
+      },
+      "properties": {
+        "id": 12,
+        "name": "33OKV APIR-LAFIA LINE 1&2_132KV LAFIA TS_33KV FDR A2_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "LAFIA",
+        "to_name": "L16"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.0,
+            9.0
+          ],
+          [
+            7.0,
+            9.0
+          ]
+        ]
+      },
+      "properties": {
+        "id": 12,
+        "name": "33OKV APIR-LAFIA LINE 1&2_132KV LAFIA TS_33KV FDR A2_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "LAFIA",
+        "to_name": "DOMA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.480392739,
+            9.074027597
+          ],
+          [
+            7.4454277,
+            9.1251575
+          ]
+        ]
+      },
+      "properties": {
+        "id": 14,
+        "name": "132KV KATAMPE 1 TS_33KV GWARINPA FDR_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "KATAMPE 1",
+        "to_name": "T1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.480392739,
+            9.074027597
+          ],
+          [
+            7.394781201,
+            9.065532949
+          ]
+        ]
+      },
+      "properties": {
+        "id": 16,
+        "name": "132KV KATAMPE 1 TS_33KV LIFECAMP FDR_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "KATAMPE 1",
+        "to_name": "LIFE CAMP ESTATE"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.493413245,
+            9.130578014
+          ],
+          [
+            7.4876221,
+            9.1407587
+          ]
+        ]
+      },
+      "properties": {
+        "id": 17,
+        "name": "132KV KATAMPE 2 TS_33KV MAITAMA FDR_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "KATAMPE 2",
+        "to_name": "C3"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.493413245,
+            9.130578014
+          ],
+          [
+            7.4974376,
+            9.1235033
+          ]
+        ]
+      },
+      "properties": {
+        "id": 18,
+        "name": "132KV KATAMPE 2 TS_33KV MPAPE FDR_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "KATAMPE 2",
+        "to_name": "MPAPE_5MVA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.508753358,
+            9.03907183
+          ],
+          [
+            7.4871623,
+            9.0171524
+          ]
+        ]
+      },
+      "properties": {
+        "id": 19,
+        "name": "132KV APO TS_33KV FDR H2_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT3",
+        "to_name": "G32"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.508753358,
+            9.03907183
+          ],
+          [
+            7.3741043,
+            8.9884961
+          ]
+        ]
+      },
+      "properties": {
+        "id": 20,
+        "name": "132KV APO TS_33KV FDR H21_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT3",
+        "to_name": "E2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.508753358,
+            9.03907183
+          ],
+          [
+            7.5087157,
+            9.058771
+          ]
+        ]
+      },
+      "properties": {
+        "id": 22,
+        "name": "132KV APO TS_33KV FDR H3_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT3",
+        "to_name": "R4"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.508753358,
+            9.03907183
+          ],
+          [
+            7.5186413,
+            9.099792
+          ]
+        ]
+      },
+      "properties": {
+        "id": 22,
+        "name": "132KV APO TS_33KV FDR H3_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT3",
+        "to_name": "R5"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.508753358,
+            9.03907183
+          ],
+          [
+            7.5128406,
+            9.0165576
+          ]
+        ]
+      },
+      "properties": {
+        "id": 22,
+        "name": "132KV APO TS_33KV FDR H3_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT3",
+        "to_name": "R3"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.508753358,
+            9.03907183
+          ],
+          [
+            7.5444391,
+            9.0377983
+          ]
+        ]
+      },
+      "properties": {
+        "id": 22,
+        "name": "132KV APO TS_33KV FDR H3_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT3",
+        "to_name": "NAF VALLEY"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.508753358,
+            9.03907183
+          ],
+          [
+            7.5518694,
+            9.0513624
+          ]
+        ]
+      },
+      "properties": {
+        "id": 22,
+        "name": "132KV APO TS_33KV FDR H3_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT3",
+        "to_name": "BAT"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.508753358,
+            9.03907183
+          ],
+          [
+            7.4948839,
+            9.004804
+          ]
+        ]
+      },
+      "properties": {
+        "id": 23,
+        "name": "132KV APO TS_33KV FDR H31_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT3",
+        "to_name": "S22"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.508753358,
+            9.03907183
+          ],
+          [
+            7.4356518,
+            9.0096048
+          ]
+        ]
+      },
+      "properties": {
+        "id": 23,
+        "name": "132KV APO TS_33KV FDR H31_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT3",
+        "to_name": "S23"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.508753358,
+            9.03907183
+          ],
+          [
+            7.4731944,
+            8.9920722
+          ]
+        ]
+      },
+      "properties": {
+        "id": 23,
+        "name": "132KV APO TS_33KV FDR H31_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT3",
+        "to_name": "S24"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.508753358,
+            9.03907183
+          ],
+          [
+            7.5041075,
+            8.9639482
+          ]
+        ]
+      },
+      "properties": {
+        "id": 24,
+        "name": "132KV APO TS_33KV FDR H35_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT3",
+        "to_name": "APO RESETTLEMENT"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.508753358,
+            9.03907183
+          ],
+          [
+            7.5059808,
+            9.0011468
+          ]
+        ]
+      },
+      "properties": {
+        "id": 25,
+        "name": "132KV APO TS_33KV FDR H37_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT3",
+        "to_name": "S26"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.508753358,
+            9.03907183
+          ],
+          [
+            7.5198985,
+            9.037434
+          ]
+        ]
+      },
+      "properties": {
+        "id": 26,
+        "name": "132KV APO TS_33KV FDR H5_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT3",
+        "to_name": "R2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.508753358,
+            9.03907183
+          ],
+          [
+            7.4982021,
+            9.0535782
+          ]
+        ]
+      },
+      "properties": {
+        "id": 26,
+        "name": "132KV APO TS_33KV FDR H5_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT3",
+        "to_name": "R6"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.508753358,
+            9.03907183
+          ],
+          [
+            7.5025798,
+            9.0046087
+          ]
+        ]
+      },
+      "properties": {
+        "id": 26,
+        "name": "132KV APO TS_33KV FDR H5_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT3",
+        "to_name": "R7"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.353324722,
+            9.134641625
+          ],
+          [
+            7.3363444,
+            9.3241375
+          ]
+        ]
+      },
+      "properties": {
+        "id": 27,
+        "name": "132KV KUBWA TS_33KV BWARI FDR_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT4",
+        "to_name": "K3"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.353324722,
+            9.134641625
+          ],
+          [
+            7.0,
+            9.0
+          ]
+        ]
+      },
+      "properties": {
+        "id": 27,
+        "name": "132KV KUBWA TS_33KV BWARI FDR_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT4",
+        "to_name": "K33"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.353324722,
+            9.134641625
+          ],
+          [
+            7.4033066,
+            9.2085795
+          ]
+        ]
+      },
+      "properties": {
+        "id": 28,
+        "name": "132KV KUBWA TS_33KV DAM FDR_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT4",
+        "to_name": "K32"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.353324722,
+            9.134641625
+          ],
+          [
+            7.3705444,
+            9.1424994
+          ]
+        ]
+      },
+      "properties": {
+        "id": 29,
+        "name": "132KV KUBWA TS_33KV DAWAKI FDR_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT4",
+        "to_name": "T2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.353324722,
+            9.134641625
+          ],
+          [
+            7.2854625,
+            9.1394143
+          ]
+        ]
+      },
+      "properties": {
+        "id": 30,
+        "name": "132KV KUBWA TS_33KV DEIDEI FDR_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT4",
+        "to_name": "MOPOL"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.353324722,
+            9.134641625
+          ],
+          [
+            7.4048964,
+            9.0586845
+          ]
+        ]
+      },
+      "properties": {
+        "id": 30,
+        "name": "132KV KUBWA TS_33KV DEIDEI FDR_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT4",
+        "to_name": "F2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.353324722,
+            9.134641625
+          ],
+          [
+            7.2777025,
+            9.1005217
+          ]
+        ]
+      },
+      "properties": {
+        "id": 30,
+        "name": "132KV KUBWA TS_33KV DEIDEI FDR_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT4",
+        "to_name": "DEIDEI 2.5MVA MARKET"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.353324722,
+            9.134641625
+          ],
+          [
+            7.4042415,
+            9.0590057
+          ]
+        ]
+      },
+      "properties": {
+        "id": 31,
+        "name": "132KV KUBWA TS_33KV KUBWA FDR_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT4",
+        "to_name": "K2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.353324722,
+            9.134641625
+          ],
+          [
+            7.3114265,
+            9.1342793
+          ]
+        ]
+      },
+      "properties": {
+        "id": 32,
+        "name": "132KV KUBWA TS_33KV NIPP FDR_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT4",
+        "to_name": "NIPP"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.492308613,
+            9.07708136
+          ],
+          [
+            7.3854302,
+            9.0746719
+          ]
+        ]
+      },
+      "properties": {
+        "id": 33,
+        "name": "132KV CENTRAL AREA TS_33KV FDR 4_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT5",
+        "to_name": "B33(TR2)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.492308613,
+            9.07708136
+          ],
+          [
+            7.505034,
+            9.064942
+          ]
+        ]
+      },
+      "properties": {
+        "id": 34,
+        "name": "132KV CENTRAL AREA TS_33KV FDR 2_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT5",
+        "to_name": "B33(TR1)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.492308613,
+            9.07708136
+          ],
+          [
+            7.477295,
+            9.0701857
+          ]
+        ]
+      },
+      "properties": {
+        "id": 35,
+        "name": "132KV CENTRAL AREA TS_33KV FDR 3_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT5",
+        "to_name": "B32"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.492308613,
+            9.07708136
+          ],
+          [
+            7.4856695,
+            9.0889235
+          ]
+        ]
+      },
+      "properties": {
+        "id": 36,
+        "name": "132KV CENTRAL AREA TS_33KV FDR 6_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT5",
+        "to_name": "C2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.492308613,
+            9.07708136
+          ],
+          [
+            7.3770669,
+            9.0745458
+          ]
+        ]
+      },
+      "properties": {
+        "id": 38,
+        "name": "132KV CENTRAL AREA TS_33KV FDR 8_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT5",
+        "to_name": "M2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.406886853,
+            9.071176237
+          ],
+          [
+            7.3963465,
+            9.0701737
+          ]
+        ]
+      },
+      "properties": {
+        "id": 40,
+        "name": "132KV SULEJA TS_33KV FIELDBASE FDR_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT6",
+        "to_name": "FIELDBASE"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.406886853,
+            9.071176237
+          ],
+          [
+            7.3957552,
+            9.0698571
+          ]
+        ]
+      },
+      "properties": {
+        "id": 41,
+        "name": "132KV SULEJA TS_33KV JERE FDR_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT6",
+        "to_name": "SABON WUSE"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.406886853,
+            9.071176237
+          ],
+          [
+            7.0,
+            9.0
+          ]
+        ]
+      },
+      "properties": {
+        "id": 42,
+        "name": "132KV SULEJA TS_33KV JIWA FDR_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT6",
+        "to_name": "FHA ZUBA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.406886853,
+            9.071176237
+          ],
+          [
+            7.2569852,
+            9.1227583
+          ]
+        ]
+      },
+      "properties": {
+        "id": 42,
+        "name": "132KV SULEJA TS_33KV JIWA FDR_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT6",
+        "to_name": "S8 MADALLA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.406886853,
+            9.071176237
+          ],
+          [
+            7.4277595,
+            9.0757876
+          ]
+        ]
+      },
+      "properties": {
+        "id": 43,
+        "name": "132KV SULEJA TS_33KV SULEJA FDR_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT6",
+        "to_name": "S3/KANTOMA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.3957552,
+            9.071206082
+          ],
+          [
+            7.0,
+            9.0
+          ]
+        ]
+      },
+      "properties": {
+        "id": 45,
+        "name": "132KV AKWANGA TS_33KV FDR 2 (LAFIA)_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT7",
+        "to_name": "A28"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.578147161,
+            9.021317621
+          ],
+          [
+            7.5819571,
+            9.0251615
+          ]
+        ]
+      },
+      "properties": {
+        "id": 47,
+        "name": "132KV KARU TS_33KV FDR K1_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT9",
+        "to_name": "A22"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.578147161,
+            9.021317621
+          ],
+          [
+            7.5786073,
+            9.0466123
+          ]
+        ]
+      },
+      "properties": {
+        "id": 50,
+        "name": "132KV KARU TS_33KV FDR K4_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT9",
+        "to_name": "A23"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.578147161,
+            9.021317621
+          ],
+          [
+            7.5868278,
+            9.014323
+          ]
+        ]
+      },
+      "properties": {
+        "id": 50,
+        "name": "132KV KARU TS_33KV FDR K4_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT9",
+        "to_name": "J22"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.578147161,
+            9.021317621
+          ],
+          [
+            7.6677421,
+            9.0086501
+          ]
+        ]
+      },
+      "properties": {
+        "id": 51,
+        "name": "132KV KARU TS_33KV FDR K5_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT9",
+        "to_name": "J32"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.578147161,
+            9.021317621
+          ],
+          [
+            7.6401824,
+            9.0098901
+          ]
+        ]
+      },
+      "properties": {
+        "id": 51,
+        "name": "132KV KARU TS_33KV FDR K5_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT9",
+        "to_name": "J33"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.06350959,
+            8.854198112
+          ],
+          [
+            7.2062216,
+            8.8767473
+          ]
+        ]
+      },
+      "properties": {
+        "id": 54,
+        "name": "132KV GWAGWALADA TS_33KV FDR L31_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "GW",
+        "to_name": "L5"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.06350959,
+            8.854198112
+          ],
+          [
+            7.0,
+            9.0
+          ]
+        ]
+      },
+      "properties": {
+        "id": 55,
+        "name": "132KV GWAGWALADA TS_33KV FDR L32_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "GW",
+        "to_name": "UNI ABUJA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.06350959,
+            8.854198112
+          ],
+          [
+            6.9581344,
+            8.4661426
+          ]
+        ]
+      },
+      "properties": {
+        "id": 56,
+        "name": "132KV GWAGWALADA TS_33KV FDR L35_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "GW",
+        "to_name": "L3"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.06350959,
+            8.854198112
+          ],
+          [
+            7.0425926,
+            8.8241676
+          ]
+        ]
+      },
+      "properties": {
+        "id": 56,
+        "name": "132KV GWAGWALADA TS_33KV FDR L35_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "GW",
+        "to_name": "L4"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.06350959,
+            8.854198112
+          ],
+          [
+            7.050764,
+            8.9383723
+          ]
+        ]
+      },
+      "properties": {
+        "id": 57,
+        "name": "132KV GWAGWALADA TS_33KV FDR L36_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "GW",
+        "to_name": "L2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.451975648,
+            9.053544757
+          ],
+          [
+            7.3716765,
+            8.9601091
+          ]
+        ]
+      },
+      "properties": {
+        "id": 59,
+        "name": "132KV KUKWABA TS_33KV FDR L32_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "KUKWABA",
+        "to_name": "TRADEMORE(UNMANNED)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.451975648,
+            9.053544757
+          ],
+          [
+            7.4494748,
+            9.0331684
+          ]
+        ]
+      },
+      "properties": {
+        "id": 60,
+        "name": "132KV KUKWABA TS_33KV FDR L33_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "KUKWABA",
+        "to_name": "S25"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.451975648,
+            9.053544757
+          ],
+          [
+            7.4512125,
+            9.066117
+          ]
+        ]
+      },
+      "properties": {
+        "id": 61,
+        "name": "132KV KUKWABA TS_33KV FDR L34_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "KUKWABA",
+        "to_name": "B6"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.451975648,
+            9.053544757
+          ],
+          [
+            7.4265601,
+            9.0410316
+          ]
+        ]
+      },
+      "properties": {
+        "id": 61,
+        "name": "132KV KUKWABA TS_33KV FDR L34_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "KUKWABA",
+        "to_name": "WUYE1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.451975648,
+            9.053544757
+          ],
+          [
+            7.4539539,
+            9.0578387
+          ]
+        ]
+      },
+      "properties": {
+        "id": 61,
+        "name": "132KV KUKWABA TS_33KV FDR L34_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "KUKWABA",
+        "to_name": "WUYE2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            6.989520487,
+            8.998081823
+          ],
+          [
+            7.3957552,
+            9.0698571
+          ]
+        ]
+      },
+      "properties": {
+        "id": 64,
+        "name": "132KV MINNA TS_33KV POWER HOUSE FDR_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "MINNA",
+        "to_name": "POWERHOUSE"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            6.989520487,
+            8.998081823
+          ],
+          [
+            7.0,
+            9.0
+          ]
+        ]
+      },
+      "properties": {
+        "id": 64,
+        "name": "132KV MINNA TS_33KV POWER HOUSE FDR_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "MINNA",
+        "to_name": "BANK FDR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.3957552,
+            9.071206082
+          ],
+          [
+            7.3957552,
+            9.0698571
+          ]
+        ]
+      },
+      "properties": {
+        "id": 75,
+        "name": "132KV AKWANGA TS_33KV FDR 1 (AKWANGA FDR)_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT7",
+        "to_name": "A20"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.0,
+            9.0
+          ],
+          [
+            7.0,
+            9.0
+          ]
+        ]
+      },
+      "properties": {
+        "id": 78,
+        "name": "132KV KEFFI TS_33KV KEFFI FDR_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT8",
+        "to_name": "K34"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.0,
+            9.0
+          ],
+          [
+            7.0,
+            9.0
+          ]
+        ]
+      },
+      "properties": {
+        "id": 79,
+        "name": "132KV KEFFI TS_33KV NASARAWA FDR_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT8",
+        "to_name": "K35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.0,
+            9.0
+          ],
+          [
+            7.0,
+            9.0
+          ]
+        ]
+      },
+      "properties": {
+        "id": 81,
+        "name": "132KV BIDA TS_33KV DOKO FDR_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "BIDA",
+        "to_name": "AP POLY"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.0,
+            9.0
+          ],
+          [
+            7.0,
+            9.0
+          ]
+        ]
+      },
+      "properties": {
+        "id": 83,
+        "name": "132KV BIDA TS_33KV LEMU FDR_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "BIDA",
+        "to_name": "WUSHISHI"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.0,
+            9.0
+          ],
+          [
+            7.0,
+            9.0
+          ]
+        ]
+      },
+      "properties": {
+        "id": 84,
+        "name": "132KV BIDA TS_33KV NEW AGAIE FDR_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "BIDA",
+        "to_name": "AGAIE"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.3963465,
+            9.071522682
+          ],
+          [
+            7.3963465,
+            9.0701737
+          ]
+        ]
+      },
+      "properties": {
+        "id": 85,
+        "name": "132KV KONTAGORA TS_33KV TOWN FDR_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "KONTAGORA",
+        "to_name": "KONTAGORA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.0002729,
+            9.001348982
+          ],
+          [
+            7.0002729,
+            9.0
+          ]
+        ]
+      },
+      "properties": {
+        "id": 88,
+        "name": "132KV LOKOJA TS_33KV FDR 2_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "LOKOJA",
+        "to_name": "LOKOGOMA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.0002729,
+            9.001348982
+          ],
+          [
+            7.0,
+            9.0
+          ]
+        ]
+      },
+      "properties": {
+        "id": 88,
+        "name": "132KV LOKOJA TS_33KV FDR 2_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "LOKOJA",
+        "to_name": "LOKOJA MAIN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            6.989520487,
+            8.998081823
+          ],
+          [
+            7.0,
+            9.0
+          ]
+        ]
+      },
+      "properties": {
+        "id": 93,
+        "name": "132KV MINNA TS_33KV LAPAI FDR_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "MINNA",
+        "to_name": "PAIKO"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            6.989520487,
+            8.998081823
+          ],
+          [
+            7.0002729,
+            9.0
+          ]
+        ]
+      },
+      "properties": {
+        "id": 94,
+        "name": "132KV MINNA TS_33KV MAIKUNKELE FDR_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "MINNA",
+        "to_name": "MAIKUNKELE"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            6.989520487,
+            8.998081823
+          ],
+          [
+            6.9996817,
+            8.9996834
+          ]
+        ]
+      },
+      "properties": {
+        "id": 97,
+        "name": "132KV MINNA TS_33KV ZARUMAI FDR_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "MINNA",
+        "to_name": "ZARUMAI"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.0,
+            9.0
+          ],
+          [
+            7.0,
+            9.0
+          ]
+        ]
+      },
+      "properties": {
+        "id": 99,
+        "name": "132KV OKENE TS_33KV OKENE FDR_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "OKENE",
+        "to_name": "OSUWAYA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.508753358,
+            9.03907183
+          ],
+          [
+            7.493886,
+            9.0556736
+          ]
+        ]
+      },
+      "properties": {
+        "id": 113,
+        "name": "132KV APO TS_33KV FDR H11_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT3",
+        "to_name": "G42"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.508753358,
+            9.03907183
+          ],
+          [
+            7.4965535,
+            9.0304201
+          ]
+        ]
+      },
+      "properties": {
+        "id": 113,
+        "name": "132KV APO TS_33KV FDR H11_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "AT3",
+        "to_name": "G4"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.426706551,
+            9.111686036
+          ],
+          [
+            7.3937615,
+            9.1181092
+          ]
+        ]
+      },
+      "properties": {
+        "id": 115,
+        "name": "132KV GIS DAWAKI TS_33KV FDR D1_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "GIS DAWAKI",
+        "to_name": "M44"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.426706551,
+            9.111686036
+          ],
+          [
+            7.4257625,
+            9.1029409
+          ]
+        ]
+      },
+      "properties": {
+        "id": 118,
+        "name": "132KV GIS DAWAKI TS_33KV FDR D2_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "GIS DAWAKI",
+        "to_name": "M42"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            7.426706551,
+            9.111686036
+          ],
+          [
+            7.4227833,
+            9.1142426
+          ]
+        ]
+      },
+      "properties": {
+        "id": 118,
+        "name": "132KV GIS DAWAKI TS_33KV FDR D2_PL_PL",
+        "type": "Feeder33",
+        "level_kv": "33",
+        "nameplate_rating": null,
+        "from_name": "GIS DAWAKI",
+        "to_name": "M43"
+      }
+    }
+  ]
+}

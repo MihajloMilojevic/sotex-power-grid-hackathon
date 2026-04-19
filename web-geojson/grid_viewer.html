@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Grid Viewer — Sotex Solutions</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d1117;--bg2:#161b22;--bg3:#21262d;
+  --border:#30363d;--border2:#484f58;
+  --text:#e6edf3;--text2:#8b949e;--text3:#6e7681;
+  --amber:#d29922;--amber2:#e3b341;--amber-dim:#2d2208;
+  --blue:#58a6ff;--blue-dim:#0d2149;
+  --teal:#39d353;--teal2:#56d364;--teal-dim:#0d2b1e;
+  --green:#3fb950;--green-dim:#0d2b17;
+  --red:#f85149;
+  --f33:#c9861e;--f11:#2f6ab5;--f11t:#1a6b45;
+}
+html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;font-size:14px;overflow:hidden}
+#app{display:flex;height:100vh}
+
+/* ── sidebar ── */
+#sidebar{width:260px;min-width:260px;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
+#sidebar-header{padding:16px;border-bottom:1px solid var(--border)}
+#sidebar-header .logo{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:4px}
+#sidebar-header h1{font-size:17px;font-weight:600;letter-spacing:-.01em;color:var(--text)}
+#sidebar-header .sub{font-size:11px;color:var(--text3);margin-top:2px}
+#sidebar-body{flex:1;overflow-y:auto;padding:12px}
+#sidebar-body::-webkit-scrollbar{width:4px}
+#sidebar-body::-webkit-scrollbar-track{background:transparent}
+#sidebar-body::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+
+.section-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin:16px 0 8px;font-weight:600}
+.section-label:first-child{margin-top:0}
+
+/* stat cards */
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:4px}
+.stat-card{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:8px 10px}
+.stat-card .val{font-size:20px;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.02em;color:var(--text)}
+.stat-card .lbl{font-size:10px;color:var(--text3);margin-top:1px;letter-spacing:.03em}
+.stat-card.wide{grid-column:span 2}
+.stat-card.wide .val{font-size:15px}
+
+/* zoom detail indicator */
+.zoom-track{position:relative;height:6px;background:var(--bg3);border:1px solid var(--border);border-radius:3px;margin:6px 0 10px}
+.zoom-fill{height:100%;background:var(--blue);border-radius:3px;transition:width .2s}
+.zoom-ticks{display:flex;justify-content:space-between;margin-top:3px}
+.zoom-tick{font-size:10px;color:var(--text3)}
+.level-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 9px;border-radius:4px;background:var(--blue-dim);border:1px solid var(--blue);font-size:12px;color:var(--blue);font-weight:500;margin-bottom:6px}
+.level-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--blue)}
+.level-desc{font-size:11px;color:var(--text3);line-height:1.5}
+
+/* legend */
+.legend-row{display:flex;align-items:center;gap:8px;padding:3px 0;font-size:12px;color:var(--text2)}
+.legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.legend-line{width:24px;height:2px;flex-shrink:0;border-radius:1px}
+.legend-dash{width:24px;height:0;border-top:2px dashed;flex-shrink:0;border-radius:1px}
+
+/* upload */
+#upload-btn{display:block;width:100%;padding:8px;background:var(--bg3);border:1px dashed var(--border2);border-radius:6px;color:var(--text2);font-size:12px;cursor:pointer;text-align:center;transition:all .15s;margin-bottom:4px}
+#upload-btn:hover{border-color:var(--blue);color:var(--blue)}
+#upload-status{font-size:11px;color:var(--text3)}
+#file-input{display:none}
+
+/* ── main SVG area ── */
+#main{flex:1;position:relative;overflow:hidden;background:var(--bg)}
+#map-svg{width:100%;height:100%}
+
+/* controls overlay */
+#controls{position:absolute;top:12px;right:12px;display:flex;flex-direction:column;gap:6px}
+.ctrl-btn{width:32px;height:32px;background:var(--bg2);border:1px solid var(--border);border-radius:6px;color:var(--text2);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.ctrl-btn:hover{border-color:var(--border2);color:var(--text);background:var(--bg3)}
+
+/* ── detail panel ── */
+#detail{width:240px;min-width:240px;background:var(--bg2);border-left:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden;transition:transform .2s;transform:translateX(240px)}
+#detail.visible{transform:translateX(0)}
+#detail-header{padding:12px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+#detail-header .node-type-badge{font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;border-radius:3px;font-weight:600}
+.badge-ts{background:var(--amber-dim);color:var(--amber2)}
+.badge-ss{background:var(--blue-dim);color:var(--blue)}
+.badge-dt{background:var(--teal-dim);color:var(--teal2)}
+#detail-close{background:none;border:none;color:var(--text3);font-size:18px;cursor:pointer;line-height:1;padding:2px}
+#detail-close:hover{color:var(--text)}
+#detail-body{flex:1;overflow-y:auto;padding:14px}
+.detail-name{font-size:15px;font-weight:600;color:var(--text);margin-bottom:12px;line-height:1.3}
+.detail-row{display:flex;justify-content:space-between;align-items:baseline;padding:5px 0;border-bottom:1px solid var(--border);gap:8px}
+.detail-row:last-child{border-bottom:none}
+.detail-key{font-size:11px;color:var(--text3);letter-spacing:.03em;flex-shrink:0}
+.detail-val{font-size:12px;color:var(--text);font-family:'Consolas','Courier New',monospace;text-align:right;word-break:break-all}
+.detail-section{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin:14px 0 6px;font-weight:600}
+.feeder-pill{display:inline-block;padding:2px 7px;border-radius:3px;font-size:11px;margin:2px 2px 2px 0}
+.feeder-f33{background:var(--amber-dim);color:var(--amber2)}
+.feeder-f11{background:var(--blue-dim);color:var(--blue)}
+.feeder-f11t{background:var(--green-dim);color:var(--green)}
+
+/* tooltip */
+#tooltip{position:absolute;pointer-events:none;background:var(--bg3);border:1px solid var(--border2);border-radius:6px;padding:6px 10px;font-size:12px;color:var(--text);opacity:0;transition:opacity .1s;z-index:100;white-space:nowrap}
+#tooltip .tt-type{font-size:10px;color:var(--text3);letter-spacing:.08em;text-transform:uppercase}
+
+/* svg styles */
+.edge{stroke-linecap:round;stroke-linejoin:round;cursor:default}
+.edge-f33{stroke:var(--f33);stroke-width:2}
+.edge-f11{stroke:var(--f11);stroke-width:1.5}
+.edge-f11_trade{stroke:var(--f11t);stroke-width:1.5;stroke-dasharray:5 3}
+.edge:hover{opacity:.7}
+
+.node-ts circle{fill:var(--amber);opacity:.95}
+.node-ss circle{fill:var(--blue);opacity:.85}
+.node-dt circle{fill:var(--teal);opacity:.75}
+.node-ts.selected circle,.node-ss.selected circle,.node-dt.selected circle{stroke:#fff;stroke-width:1.5px}
+.node{cursor:pointer}
+
+/* status bar */
+#statusbar{position:absolute;bottom:0;left:0;right:0;height:22px;background:var(--bg2);border-top:1px solid var(--border);display:flex;align-items:center;padding:0 12px;gap:16px;font-size:11px;color:var(--text3)}
+.status-item{display:flex;align-items:center;gap:5px}
+.status-dot{width:6px;height:6px;border-radius:50%}
+</style>
+</head>
+<body>
+<div id="app">
+
+<!-- sidebar -->
+<div id="sidebar">
+  <div id="sidebar-header">
+    <div class="logo">Sotex Solutions</div>
+    <h1>Grid Viewer</h1>
+    <div class="sub" id="data-source">Demo data — load grid_export.json for live data</div>
+  </div>
+  <div id="sidebar-body">
+    <div class="section-label">Network summary</div>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="val" id="s-ts">—</div><div class="lbl">Trans. Stations</div></div>
+      <div class="stat-card"><div class="val" id="s-ss">—</div><div class="lbl">Substations</div></div>
+      <div class="stat-card"><div class="val" id="s-dt">—</div><div class="lbl">Transformers</div></div>
+      <div class="stat-card"><div class="val" id="s-kva">—</div><div class="lbl">Total kVA</div></div>
+      <div class="stat-card wide"><div class="val" id="s-feeders">—</div><div class="lbl">Feeder lines (F33 + F11)</div></div>
+    </div>
+
+    <div class="section-label">Detail level — auto by zoom</div>
+    <div class="level-badge"><span class="dot"></span><span id="level-badge-text">L3 · Full detail</span></div>
+    <div class="zoom-track"><div class="zoom-fill" id="zoom-fill" style="width:100%"></div></div>
+    <div class="zoom-ticks">
+      <span class="zoom-tick">1×</span>
+      <span class="zoom-tick" style="color:var(--text2)">↑ SS</span>
+      <span class="zoom-tick" style="color:var(--text2)">↑ DT</span>
+      <span class="zoom-tick">max</span>
+    </div>
+    <div class="level-desc" id="level-desc">All distribution transformers and 11 kV feeders.</div>
+
+    <div class="section-label">Legend</div>
+    <div class="legend-row"><div class="legend-dot" style="background:var(--amber)"></div> Transmission station (TS)</div>
+    <div class="legend-row"><div class="legend-dot" style="background:var(--blue)"></div> Injection substation (SS)</div>
+    <div class="legend-row"><div class="legend-dot" style="background:var(--teal)"></div> Distribution transformer (DT)</div>
+    <div class="legend-row"><div class="legend-line" style="background:var(--f33)"></div> 33 kV feeder (F33)</div>
+    <div class="legend-row"><div class="legend-line" style="background:var(--f11)"></div> 11 kV feeder (F11)</div>
+    <div class="legend-row"><div class="legend-dash" style="border-color:var(--f11t)"></div> Trade feeder (F11 direct)</div>
+
+    <div class="section-label">Data source</div>
+    <label id="upload-btn" for="file-input">&#8679; Load grid_export.json</label>
+    <input type="file" id="file-input" accept=".json">
+    <div id="upload-status">Using built-in demo data</div>
+  </div>
+</div>
+
+<!-- map -->
+<div id="main">
+  <svg id="map-svg"></svg>
+  <div id="controls">
+    <button class="ctrl-btn" id="zoom-in" title="Zoom in">+</button>
+    <button class="ctrl-btn" id="zoom-out" title="Zoom out">−</button>
+    <button class="ctrl-btn" id="zoom-fit" title="Fit to screen">&#x25A3;</button>
+  </div>
+  <div id="tooltip"><div class="tt-type" id="tt-type"></div><div id="tt-name"></div></div>
+  <div id="statusbar">
+    <div class="status-item"><div class="status-dot" style="background:var(--teal2)"></div><span id="sb-nodes">—</span> nodes</div>
+    <div class="status-item"><div class="status-dot" style="background:var(--f11)"></div><span id="sb-edges">—</span> edges</div>
+    <div class="status-item" id="sb-zoom">zoom 1.0×</div>
+    <div class="status-item" style="margin-left:auto" id="sb-coords"></div>
+  </div>
+</div>
+
+<!-- detail panel -->
+<div id="detail">
+  <div id="detail-header">
+    <span class="node-type-badge" id="detail-badge"></span>
+    <button id="detail-close">&#x2715;</button>
+  </div>
+  <div id="detail-body">
+    <div class="detail-name" id="detail-name"></div>
+    <div id="detail-rows"></div>
+    <div id="detail-feeders-section"></div>
+  </div>
+</div>
+
+</div><!-- #app -->
+
+<script>
+const MOCK_DATA = {"meta":{"schema_version":"1.0","detail_levels":{"1":"Transmission stations only","2":"TS + injection substations + 33 kV feeders","3":"Full detail \u2014 all distribution transformers + 11 kV feeders"},"chain_note":"Edges within a feeder form a sequential chain \u2014 render as chain[0]\u2192chain[1]\u2192\u2026 NOT as a star from the parent station."},"summary":{"transmission_stations":2,"substations":5,"distribution_transformers":17,"feeders_33kv":2,"feeders_11kv":6,"total_nodes":24,"total_edges":22,"total_nameplate_kva":5090,"bounding_box":{"min_lat":8.88,"max_lat":9.13,"min_lon":7.01,"max_lon":7.53}},"nodes":[{"id":"ts_1","type":"ts","db_id":1,"label":"TS-Abuja Main","lat":9.05,"lon":7.49,"detail_level":1},{"id":"ts_2","type":"ts","db_id":2,"label":"TS-Kuje","lat":8.88,"lon":7.02,"detail_level":1},{"id":"ss_1","type":"ss","db_id":1,"label":"SS-Garki","lat":9.02,"lon":7.48,"detail_level":2},{"id":"ss_2","type":"ss","db_id":2,"label":"SS-Maitama","lat":9.08,"lon":7.5,"detail_level":2},{"id":"ss_3","type":"ss","db_id":3,"label":"SS-Wuse","lat":9.06,"lon":7.47,"detail_level":2},{"id":"ss_4","type":"ss","db_id":4,"label":"SS-Gwarinpa","lat":9.12,"lon":7.39,"detail_level":2},{"id":"ss_5","type":"ss","db_id":5,"label":"SS-Kuje-North","lat":8.93,"lon":7.01,"detail_level":2},{"id":"dt_1","type":"dt","db_id":1,"label":"DT-Garki-1","lat":9.02,"lon":7.475,"nameplate_kva":500,"meter_id":101,"detail_level":3},{"id":"dt_2","type":"dt","db_id":2,"label":"DT-Garki-2","lat":9.015,"lon":7.485,"nameplate_kva":315,"meter_id":102,"detail_level":3},{"id":"dt_3","type":"dt","db_id":3,"label":"DT-Garki-3","lat":9.01,"lon":7.47,"nameplate_kva":200,"meter_id":103,"detail_level":3},{"id":"dt_4","type":"dt","db_id":4,"label":"DT-Maitama-1","lat":9.085,"lon":7.505,"nameplate_kva":500,"meter_id":104,"detail_level":3},{"id":"dt_5","type":"dt","db_id":5,"label":"DT-Maitama-2","lat":9.09,"lon":7.515,"nameplate_kva":315,"meter_id":105,"detail_level":3},{"id":"dt_6","type":"dt","db_id":6,"label":"DT-Maitama-3","lat":9.095,"lon":7.498,"nameplate_kva":200,"meter_id":106,"detail_level":3},{"id":"dt_7","type":"dt","db_id":7,"label":"DT-Wuse-1","lat":9.065,"lon":7.465,"nameplate_kva":500,"meter_id":107,"detail_level":3},{"id":"dt_8","type":"dt","db_id":8,"label":"DT-Wuse-2","lat":9.058,"lon":7.472,"nameplate_kva":315,"meter_id":108,"detail_level":3},{"id":"dt_9","type":"dt","db_id":9,"label":"DT-Gwarinpa-1","lat":9.125,"lon":7.385,"nameplate_kva":500,"meter_id":109,"detail_level":3},{"id":"dt_10","type":"dt","db_id":10,"label":"DT-Gwarinpa-2","lat":9.13,"lon":7.395,"nameplate_kva":315,"meter_id":110,"detail_level":3},{"id":"dt_11","type":"dt","db_id":11,"label":"DT-Gwarinpa-3","lat":9.118,"lon":7.4,"nameplate_kva":200,"meter_id":111,"detail_level":3},{"id":"dt_12","type":"dt","db_id":12,"label":"DT-Direct-1","lat":9.04,"lon":7.52,"nameplate_kva":100,"meter_id":112,"detail_level":3},{"id":"dt_13","type":"dt","db_id":13,"label":"DT-Direct-2","lat":9.03,"lon":7.53,"nameplate_kva":100,"meter_id":113,"detail_level":3},{"id":"dt_14","type":"dt","db_id":14,"label":"DT-Trade-1","lat":9.05,"lon":7.43,"nameplate_kva":200,"meter_id":114,"detail_level":3},{"id":"dt_15","type":"dt","db_id":15,"label":"DT-Trade-2","lat":9.045,"lon":7.42,"nameplate_kva":200,"meter_id":115,"detail_level":3},{"id":"dt_16","type":"dt","db_id":16,"label":"DT-Kuje-1","lat":8.93,"lon":7.015,"nameplate_kva":315,"meter_id":116,"detail_level":3},{"id":"dt_17","type":"dt","db_id":17,"label":"DT-Kuje-2","lat":8.92,"lon":7.01,"nameplate_kva":315,"meter_id":117,"detail_level":3}],"edges":[{"id":"e_f33_1_0","source":"ts_1","target":"ss_1","feeder_id":"f33_1","feeder_type":"f33","feeder_name":"F33-Abuja-Main","detail_level":2},{"id":"e_f33_1_1","source":"ss_1","target":"dt_13","feeder_id":"f33_1","feeder_type":"f33","feeder_name":"F33-Abuja-Main","detail_level":3},{"id":"e_f33_1_2","source":"dt_13","target":"dt_12","feeder_id":"f33_1","feeder_type":"f33","feeder_name":"F33-Abuja-Main","detail_level":3},{"id":"e_f33_1_3","source":"dt_12","target":"ss_2","feeder_id":"f33_1","feeder_type":"f33","feeder_name":"F33-Abuja-Main","detail_level":3},{"id":"e_f33_1_4","source":"ss_2","target":"ss_4","feeder_id":"f33_1","feeder_type":"f33","feeder_name":"F33-Abuja-Main","detail_level":2},{"id":"e_f33_1_5","source":"ss_4","target":"ss_3","feeder_id":"f33_1","feeder_type":"f33","feeder_name":"F33-Abuja-Main","detail_level":2},{"id":"e_f33_2_0","source":"ts_2","target":"ss_5","feeder_id":"f33_2","feeder_type":"f33","feeder_name":"F33-Kuje-Line","detail_level":2},{"id":"e_f11_1_0","source":"ss_1","target":"dt_1","feeder_id":"f11_1","feeder_type":"f11","feeder_name":"F11-Garki","detail_level":3},{"id":"e_f11_1_1","source":"dt_1","target":"dt_3","feeder_id":"f11_1","feeder_type":"f11","feeder_name":"F11-Garki","detail_level":3},{"id":"e_f11_1_2","source":"dt_3","target":"dt_2","feeder_id":"f11_1","feeder_type":"f11","feeder_name":"F11-Garki","detail_level":3},{"id":"e_f11_2_0","source":"ss_2","target":"dt_4","feeder_id":"f11_2","feeder_type":"f11","feeder_name":"F11-Maitama","detail_level":3},{"id":"e_f11_2_1","source":"dt_4","target":"dt_5","feeder_id":"f11_2","feeder_type":"f11","feeder_name":"F11-Maitama","detail_level":3},{"id":"e_f11_2_2","source":"dt_5","target":"dt_6","feeder_id":"f11_2","feeder_type":"f11","feeder_name":"F11-Maitama","detail_level":3},{"id":"e_f11_3_0","source":"ss_3","target":"dt_8","feeder_id":"f11_3","feeder_type":"f11","feeder_name":"F11-Wuse","detail_level":3},{"id":"e_f11_3_1","source":"dt_8","target":"dt_7","feeder_id":"f11_3","feeder_type":"f11","feeder_name":"F11-Wuse","detail_level":3},{"id":"e_f11_4_0","source":"ss_4","target":"dt_11","feeder_id":"f11_4","feeder_type":"f11","feeder_name":"F11-Gwarinpa","detail_level":3},{"id":"e_f11_4_1","source":"dt_11","target":"dt_10","feeder_id":"f11_4","feeder_type":"f11","feeder_name":"F11-Gwarinpa","detail_level":3},{"id":"e_f11_4_2","source":"dt_10","target":"dt_9","feeder_id":"f11_4","feeder_type":"f11","feeder_name":"F11-Gwarinpa","detail_level":3},{"id":"e_f11_5_0","source":"ts_1","target":"dt_14","feeder_id":"f11_5","feeder_type":"f11_trade","feeder_name":"F11-Trade","detail_level":3},{"id":"e_f11_5_1","source":"dt_14","target":"dt_15","feeder_id":"f11_5","feeder_type":"f11_trade","feeder_name":"F11-Trade","detail_level":3},{"id":"e_f11_6_0","source":"ss_5","target":"dt_17","feeder_id":"f11_6","feeder_type":"f11","feeder_name":"F11-Kuje","detail_level":3},{"id":"e_f11_6_1","source":"dt_17","target":"dt_16","feeder_id":"f11_6","feeder_type":"f11","feeder_name":"F11-Kuje","detail_level":3}],"feeder_chains":[{"feeder_id":"f33_1","feeder_type":"f33","feeder_name":"F33-Abuja-Main","nameplate_kva":20000,"meter_id":201,"chain":["ts_1","ss_1","dt_13","dt_12","ss_2","ss_4","ss_3"]},{"feeder_id":"f33_2","feeder_type":"f33","feeder_name":"F33-Kuje-Line","nameplate_kva":10000,"meter_id":202,"chain":["ts_2","ss_5"]},{"feeder_id":"f11_1","feeder_type":"f11","feeder_name":"F11-Garki","nameplate_kva":5000,"meter_id":211,"chain":["ss_1","dt_1","dt_3","dt_2"]},{"feeder_id":"f11_2","feeder_type":"f11","feeder_name":"F11-Maitama","nameplate_kva":5000,"meter_id":212,"chain":["ss_2","dt_4","dt_5","dt_6"]},{"feeder_id":"f11_3","feeder_type":"f11","feeder_name":"F11-Wuse","nameplate_kva":5000,"meter_id":213,"chain":["ss_3","dt_8","dt_7"]},{"feeder_id":"f11_4","feeder_type":"f11","feeder_name":"F11-Gwarinpa","nameplate_kva":5000,"meter_id":214,"chain":["ss_4","dt_11","dt_10","dt_9"]},{"feeder_id":"f11_5","feeder_type":"f11_trade","feeder_name":"F11-Trade","nameplate_kva":2000,"meter_id":215,"chain":["ts_1","dt_14","dt_15"]},{"feeder_id":"f11_6","feeder_type":"f11","feeder_name":"F11-Kuje","nameplate_kva":3000,"meter_id":216,"chain":["ss_5","dt_17","dt_16"]}]};
+
+const LEVEL_DESCS = {
+  1: 'Transmission stations and 33 kV feeder chains only.',
+  2: 'Adds injection substations.',
+  3: 'All distribution transformers and 11 kV feeders.'
+};
+
+let gridData = null;
+let currentLevel = 3;
+let selectedNodeId = null;
+let zoom, svgEl, gMain;
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+
+function init(data) {
+  gridData = data;
+  updateSummary();
+  buildMap();
+}
+
+function updateSummary() {
+  const s = gridData.summary;
+  document.getElementById('s-ts').textContent = s.transmission_stations.toLocaleString();
+  document.getElementById('s-ss').textContent = s.substations.toLocaleString();
+  document.getElementById('s-dt').textContent = s.distribution_transformers.toLocaleString();
+  document.getElementById('s-kva').textContent = (s.total_nameplate_kva/1000).toFixed(0)+'k';
+  document.getElementById('s-feeders').textContent = s.feeders_33kv + ' × F33   +   ' + s.feeders_11kv + ' × F11';
+}
+
+// ── Map ───────────────────────────────────────────────────────────────────────
+
+function buildMap() {
+  const svg = d3.select('#map-svg');
+  svg.selectAll('*').remove();
+
+  svgEl = document.getElementById('map-svg');
+  const W = svgEl.clientWidth || 900;
+  const H = svgEl.clientHeight || 700;
+
+  // node lookup
+  const nodeMap = {};
+  gridData.nodes.forEach(n => { nodeMap[n.id] = n; });
+
+  // Compute bounding box from all nodes with coords
+  const validNodes = gridData.nodes.filter(n => n.lat != null && n.lon != null);
+  if (!validNodes.length) return;
+
+  const lats = validNodes.map(n => n.lat);
+  const lons = validNodes.map(n => n.lon);
+  const minLat = Math.min(...lats), maxLat = Math.max(...lats);
+  const minLon = Math.min(...lons), maxLon = Math.max(...lons);
+
+  const pad = 60;
+  const scaleX = (W - pad*2) / (maxLon - minLon || 1);
+  const scaleY = (H - pad*2) / (maxLat - minLat || 1);
+  const scale = Math.min(scaleX, scaleY);
+
+  const cx = (minLon + maxLon) / 2;
+  const cy = (minLat + maxLat) / 2;
+
+  function project(lon, lat) {
+    return [
+      W/2 + (lon - cx) * scale,
+      H/2 - (lat - cy) * scale   // flip Y
+    ];
+  }
+
+  // Attach projected coords to nodes
+  gridData.nodes.forEach(n => {
+    if (n.lat != null) {
+      const [px, py] = project(n.lon, n.lat);
+      n._x = px; n._y = py;
+    }
+  });
+
+  // Zoom thresholds: k < L1_MAX → L1, k < L2_MAX → L2, else → L3
+  const L1_MAX = 2.0;
+  const L2_MAX = 5.0;
+  const ZOOM_MAX = 40;
+
+  function zoomToLevel(k) {
+    if (k < L1_MAX) return 1;
+    if (k < L2_MAX) return 2;
+    return 3;
+  }
+
+  function updateZoomIndicator(k) {
+    const lvl = zoomToLevel(k);
+    const pct = Math.min(100, (Math.log(k) / Math.log(ZOOM_MAX)) * 100);
+    document.getElementById('zoom-fill').style.width = pct.toFixed(1) + '%';
+    const labels = {1:'L1 · Transmission stations',2:'L2 · + Substations',3:'L3 · Full detail'};
+    document.getElementById('level-badge-text').textContent = labels[lvl];
+    document.getElementById('level-desc').textContent = LEVEL_DESCS[lvl];
+  }
+
+  zoom = d3.zoom()
+    .scaleExtent([0.1, ZOOM_MAX])
+    .on('zoom', (event) => {
+      const {transform} = event;
+      gMain.attr('transform', transform);
+      const k = transform.k;
+      document.getElementById('sb-zoom').textContent = 'zoom ' + k.toFixed(1) + '×';
+      updateZoomIndicator(k);
+
+      const newLevel = zoomToLevel(k);
+      if (newLevel !== currentLevel) {
+        currentLevel = newLevel;
+        renderLevel(gMain.select('.edges'), gMain.select('.nodes'), nodeMap);
+      } else {
+        // Same level — just rescale node sizes and label visibility
+        rescaleNodes(k);
+      }
+    });
+  svg.call(zoom);
+
+  // Main group
+  gMain = svg.append('g').attr('class', 'main-group');
+
+  // Defs
+  svg.append('defs').html(`
+    <filter id="glow"><feGaussianBlur stdDeviation="2.5" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  `);
+
+  // Edge group (below nodes)
+  const gEdges = gMain.append('g').attr('class', 'edges');
+  // Node group (above edges)
+  const gNodes = gMain.append('g').attr('class', 'nodes');
+
+  renderLevel(gEdges, gNodes, nodeMap);
+  updateZoomIndicator(1);
+  updateStatusBar();
+}
+
+function getCurrentZoom() {
+  try { return d3.zoomTransform(document.getElementById('map-svg')).k; } catch(e) { return 1; }
+}
+
+// Node target pixel sizes (screen px, constant regardless of zoom)
+const NODE_R = {ts: 10, ss: 7, dt: 4};
+// At what zoom level to show labels
+const LABEL_ZOOM = {ts: 0, ss: 2.5, dt: 8};
+
+function rescaleNodes(k) {
+  d3.selectAll('g.node').each(function(d) {
+    const r = NODE_R[d.type] / k;
+    d3.select(this).select('circle').attr('r', r);
+    // Labels
+    d3.select(this).selectAll('text.node-label')
+      .style('opacity', k >= LABEL_ZOOM[d.type] ? 1 : 0)
+      .attr('dy', -(r + 3 / k));
+    d3.select(this).selectAll('text.node-label')
+      .style('font-size', (11 / k) + 'px');
+  });
+}
+
+function renderLevel(gEdges, gNodes, nodeMap) {
+  const lvl = currentLevel;
+  const k = getCurrentZoom();
+
+  // ── Edges ───────────────────────────────────────────────────────────────────
+  gEdges.selectAll('*').remove();
+
+  const visibleEdges = gridData.edges.filter(e => e.detail_level <= lvl);
+  gEdges.selectAll('line.edge')
+    .data(visibleEdges)
+    .join('line')
+    .attr('class', e => `edge edge-${e.feeder_type}`)
+    .style('stroke-width', e => (e.feeder_type === 'f33' ? 2 : 1.5) / k)
+    .attr('x1', e => nodeMap[e.source]?._x ?? 0)
+    .attr('y1', e => nodeMap[e.source]?._y ?? 0)
+    .attr('x2', e => nodeMap[e.target]?._x ?? 0)
+    .attr('y2', e => nodeMap[e.target]?._y ?? 0);
+
+  // ── Nodes ───────────────────────────────────────────────────────────────────
+  gNodes.selectAll('*').remove();
+
+  const visibleNodes = gridData.nodes.filter(n =>
+    n.detail_level <= lvl && n.lat != null
+  );
+
+  const tooltip = document.getElementById('tooltip');
+
+  const nodeG = gNodes.selectAll('g.node')
+    .data(visibleNodes, d => d.id)
+    .join('g')
+    .attr('class', d => `node node-${d.type}${d.id === selectedNodeId ? ' selected' : ''}`)
+    .attr('transform', d => `translate(${d._x},${d._y})`)
+    .on('mouseenter', function(event, d) {
+      document.getElementById('tt-type').textContent = {ts:'Transmission Station',ss:'Injection Substation',dt:'Distribution Transformer'}[d.type];
+      document.getElementById('tt-name').textContent = d.label || d.id;
+      tooltip.style.opacity = '1';
+    })
+    .on('mousemove', function(event) {
+      const rect = svgEl.getBoundingClientRect();
+      tooltip.style.left = (event.clientX - rect.left + 12) + 'px';
+      tooltip.style.top  = (event.clientY - rect.top  - 10) + 'px';
+    })
+    .on('mouseleave', function() {
+      tooltip.style.opacity = '0';
+    })
+    .on('click', function(event, d) {
+      event.stopPropagation();
+      tooltip.style.opacity = '0';
+      selectNode(d);
+    });
+
+  nodeG.append('circle')
+    .attr('r', d => NODE_R[d.type] / k);
+
+  // Labels for all types (visibility controlled by zoom via rescaleNodes)
+  nodeG.append('text')
+    .attr('class', 'node-label')
+    .attr('dy', d => -(NODE_R[d.type] / k + 3 / k))
+    .attr('text-anchor', 'middle')
+    .style('font-size', (11 / k) + 'px')
+    .style('font-weight', d => d.type === 'ts' ? '600' : '400')
+    .style('fill', d => d.type === 'ts' ? 'var(--amber2)' : d.type === 'ss' ? 'var(--blue)' : 'var(--teal2)')
+    .style('pointer-events', 'none')
+    .style('opacity', d => k >= LABEL_ZOOM[d.type] ? 1 : 0)
+    .text(d => d.label || d.id);
+
+  document.getElementById('sb-nodes').textContent = visibleNodes.length.toLocaleString();
+  document.getElementById('sb-edges').textContent = visibleEdges.length.toLocaleString();
+}
+
+function refreshNodes() {
+  d3.selectAll('g.node')
+    .classed('selected', d => d.id === selectedNodeId);
+}
+
+// ── Node detail panel ─────────────────────────────────────────────────────────
+
+function selectNode(d) {
+  selectedNodeId = d.id;
+  refreshNodes();
+
+  const panel = document.getElementById('detail');
+  panel.classList.add('visible');
+
+  const badge = document.getElementById('detail-badge');
+  badge.className = 'node-type-badge badge-' + d.type;
+  badge.textContent = {ts:'Transmission Station', ss:'Inj. Substation', dt:'Distribution Tx'}[d.type];
+
+  document.getElementById('detail-name').textContent = d.label || d.id;
+
+  const rows = [
+    ['ID', d.id],
+    ['DB id', d.db_id],
+    ['Latitude', d.lat != null ? d.lat.toFixed(6) : '—'],
+    ['Longitude', d.lon != null ? d.lon.toFixed(6) : '—'],
+  ];
+  if (d.nameplate_kva != null) rows.push(['Nameplate', d.nameplate_kva.toLocaleString() + ' kVA']);
+  if (d.meter_id != null)      rows.push(['Meter ID', d.meter_id]);
+  if (d.feeder11_id != null)   rows.push(['F11 ID', d.feeder11_id]);
+  if (d.feeder33_id != null)   rows.push(['F33 ID', d.feeder33_id]);
+
+  document.getElementById('detail-rows').innerHTML = rows.map(([k,v]) =>
+    `<div class="detail-row"><span class="detail-key">${k}</span><span class="detail-val">${v}</span></div>`
+  ).join('');
+
+  // Feeders connected to this node
+  const connectedFeeders = gridData.feeder_chains.filter(fc => fc.chain.includes(d.id));
+  const fsec = document.getElementById('detail-feeders-section');
+  if (connectedFeeders.length) {
+    fsec.innerHTML = '<div class="detail-section">Connected feeders</div>' +
+      connectedFeeders.map(fc => {
+        const cls = fc.feeder_type === 'f33' ? 'feeder-f33' :
+                    fc.feeder_type === 'f11_trade' ? 'feeder-f11t' : 'feeder-f11';
+        return `<span class="feeder-pill ${cls}">${fc.feeder_name || fc.feeder_id}</span>`;
+      }).join('');
+  } else {
+    fsec.innerHTML = '';
+  }
+}
+
+// ── Detail panel close ────────────────────────────────────────────────────────
+document.getElementById('detail-close').addEventListener('click', () => {
+  selectedNodeId = null;
+  refreshNodes();
+  document.getElementById('detail').classList.remove('visible');
+});
+
+d3.select('#map-svg').on('click', () => {
+  selectedNodeId = null;
+  refreshNodes();
+  document.getElementById('detail').classList.remove('visible');
+});
+
+// ── Zoom controls ─────────────────────────────────────────────────────────────
+
+document.getElementById('zoom-in').addEventListener('click', () => {
+  d3.select('#map-svg').transition().duration(250).call(zoom.scaleBy, 1.5);
+});
+document.getElementById('zoom-out').addEventListener('click', () => {
+  d3.select('#map-svg').transition().duration(250).call(zoom.scaleBy, 1/1.5);
+});
+document.getElementById('zoom-fit').addEventListener('click', () => {
+  d3.select('#map-svg').transition().duration(400).call(zoom.transform, d3.zoomIdentity);
+});
+
+// ── File upload ───────────────────────────────────────────────────────────────
+
+document.getElementById('file-input').addEventListener('change', function() {
+  const file = this.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const data = JSON.parse(e.target.result);
+      document.getElementById('data-source').textContent = file.name;
+      document.getElementById('upload-status').textContent = 'Loaded: ' + file.name;
+      init(data);
+    } catch(err) {
+      document.getElementById('upload-status').textContent = 'Error: invalid JSON — ' + err.message;
+    }
+  };
+  reader.readAsText(file);
+});
+
+// ── Status bar helpers ────────────────────────────────────────────────────────
+
+function updateStatusBar() {
+  const lvl = currentLevel;
+  const vn = gridData.nodes.filter(n => n.detail_level <= lvl && n.lat != null).length;
+  const ve = gridData.edges.filter(e => e.detail_level <= lvl).length;
+  document.getElementById('sb-nodes').textContent = vn.toLocaleString();
+  document.getElementById('sb-edges').textContent = ve.toLocaleString();
+}
+
+// ── Boot ──────────────────────────────────────────────────────────────────────
+
+init(MOCK_DATA);
+
+// Resize handler
+window.addEventListener('resize', () => {
+  if (gridData) buildMap();
+});
+</script>
+</body>
+</html>
